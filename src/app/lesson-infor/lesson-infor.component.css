@@ -1,0 +1,31 @@
+.summernote .btn-group,
+.popover-content .btn-group {
+  background: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.summernote .btn,
+.note-btn {
+  color: rgba(0, 0, 0, 0.54) !important;
+  background-color: transparent !important;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.summernote .dropdown-toggle:after {
+  vertical-align: middle;
+}
+
+/* Border of the Summernote textarea */
+
+.note-editor.note-frame {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+}

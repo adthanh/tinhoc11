@@ -1,4 +1,6 @@
 
+import { Guard } from './guards/auth.guard';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
@@ -12,6 +14,11 @@ import { HeaderComponent } from './header/header.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FooterComponent } from './footer/footer.component';
 import { HomeComponent } from './home/home.component';
+import { PublicComponent } from './layouts/public/public.component';
+import { SecureComponent } from './layouts/secure/secure.component';
+import { LayoutModule } from 'angular-admin-lte';
+import { BoxModule } from 'angular-admin-lte';
+import { AdminLteModulesModule } from './admin-lte/admin-lte.module';
 
 @NgModule({
   declarations: [
@@ -20,16 +27,21 @@ import { HomeComponent } from './home/home.component';
     UserComponent,
     HeaderComponent,
     FooterComponent,
-    HomeComponent
+    HomeComponent,
+    PublicComponent,
+    SecureComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    LayoutModule,
+    BoxModule,
+    AdminLteModulesModule
   ],
-  providers: [],
+  providers: [Guard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
