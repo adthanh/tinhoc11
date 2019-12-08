@@ -1,32 +1,38 @@
-import { HomeComponent } from './home/home.component';
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { UserComponent } from './user/user.component';
-import { LoginComponent } from './login/login.component';
-import { AdminLTEComponent } from './admin-lte/admin-lte.component';
-import { PublicComponent } from './layouts/public/public.component';
-import { SecureComponent } from './layouts/secure/secure.component';
-import { PUBLIC_ROUTES } from './layouts/public/public.routes';
-import { SECURE_ROUTES } from './layouts/secure/secure.routes';
-import { Guard } from './guards/auth.guard';
-// const routes: Routes = [
-//   { path: 'home', component: HomeComponent },
-//   { path: 'login', component: LoginComponent },
-//   { path: 'admin', component: AdminLTEComponent },
-//   { path: '', component: HomeComponent }
-// ];
+import {NgModule} from '@angular/core';
+import {RouterModule, Routes} from '@angular/router';
+import {MasterComponent} from './layouts/master/master.component';
+import {AdminComponent} from './layouts/admin/admin.component';
+import {Guard} from './core/guards/auth.guard';
+import {HomeComponent} from './pages/master/home/home.component';
+import {PagesModule} from './pages/pages.module';
+import {LoginComponent} from './pages/master/login/login.component';
+import {SyllabusMnComponent} from './pages/admin/syllabus-mn/syllabus-mn.component';
+import {ProjectAddMnComponent} from './pages/admin/project-add-mn/project-add-mn.component';
+
 const APP_ROUTES: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full', },
-  { path: 'home', component: PublicComponent, data: { title: 'Public Views' }, children: PUBLIC_ROUTES },
-  { path: 'admin', component: SecureComponent, data: { title: 'Secure Views' }, children: SECURE_ROUTES, canActivate: [Guard] }
+  {
+    path: '', component: MasterComponent, children: [
+      {path: '', component: HomeComponent},
+      {path: 'login', component: LoginComponent},
+    ]
+  },
+  {
+    path: 'admin', component: AdminComponent, data: {title: 'Secure Views'}, children: [
+      {path: '', component: SyllabusMnComponent},
+      {path: 'lesson', component: ProjectAddMnComponent},
+    ], canActivate: [Guard]
+  }
 ];
+
 @NgModule({
   imports: [
-    RouterModule.forRoot(APP_ROUTES)
+    RouterModule.forRoot(APP_ROUTES),
+    PagesModule
   ],
   exports: [
-    RouterModule
+    RouterModule,
   ],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

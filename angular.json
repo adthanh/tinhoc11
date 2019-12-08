@@ -32,7 +32,6 @@
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",
               "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "src/assets/admin-lte/js/adminlte.js"
             ]
           },
           "configurations": {

@@ -1,35 +1,22 @@
+import {Guard} from './core/guards/auth.guard';
 
-import { Guard } from './guards/auth.guard';
-
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { LoginComponent } from './login/login.component';
-import { UserComponent } from './user/user.component';
-import { FormsModule } from '@angular/forms';
-import { from } from 'rxjs';
-import { HeaderComponent } from './header/header.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FooterComponent } from './footer/footer.component';
-import { HomeComponent } from './home/home.component';
-import { PublicComponent } from './layouts/public/public.component';
-import { SecureComponent } from './layouts/secure/secure.component';
-import { LayoutModule } from 'angular-admin-lte';
-import { BoxModule } from 'angular-admin-lte';
-import { AdminLteModulesModule } from './admin-lte/admin-lte.module';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
+import {AppRoutingModule} from './app-routing.module';
+import {AppComponent} from './app.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {FormsModule} from '@angular/forms';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {MasterComponent} from './layouts/master/master.component';
+import {AdminComponent} from './layouts/admin/admin.component';
+import {MasterModule} from './layouts/master/master.module';
+import {AdminModule} from './layouts/admin/admin.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    UserComponent,
-    HeaderComponent,
-    FooterComponent,
-    HomeComponent,
-    PublicComponent,
-    SecureComponent
+    MasterComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
@@ -37,11 +24,11 @@ import { AdminLteModulesModule } from './admin-lte/admin-lte.module';
     BrowserAnimationsModule,
     FormsModule,
     FontAwesomeModule,
-    LayoutModule,
-    BoxModule,
-    AdminLteModulesModule
+    MasterModule,
+    AdminModule
   ],
   providers: [Guard],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
