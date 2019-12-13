@@ -35,26 +35,11 @@
                 <th>Hành Động</th>
               </tr>
               </thead>
-              <tbody>
+              <tbody *ngFor="let syllabus of syllabuss">
               <tr>
-                <td>Misc</td>
-                <td>Lynx</td>
-                <td>Text only</td>
-              </tr>
-              <tr>
-                <td>Misc</td>
-                <td>IE Mobile</td>
-                <td>Windows Mobile 6</td>
-              </tr>
-              <tr>
-                <td>Misc</td>
-                <td>PSP browser</td>
-                <td>PSP</td>
-              </tr>
-              <tr>
-                <td>Other browsers</td>
-                <td>All others</td>
-                <td>-</td>
+                <td>{{syllabus.id}}</td>
+                <td>{{syllabus.syllabusName}}</td>
+                <td>{{syllabus.act}}</td>
               </tr>
               </tbody>
             </table>

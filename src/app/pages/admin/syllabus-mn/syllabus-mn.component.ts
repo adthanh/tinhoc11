@@ -1,3 +1,4 @@
+import { Syllabus } from './../../../response/syllabus-dto';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,6 +10,8 @@ export class SyllabusMnComponent implements OnInit {
 
   constructor() { }
 
+  syllabuss: Syllabus[];
+  syllabus: Syllabus;
   ngOnInit() {
   }
 
