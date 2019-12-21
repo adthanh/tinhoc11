@@ -31,9 +31,9 @@
                 <span>
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tìm kiếm theo tên"
-                      aria-label="Recipient's username" aria-describedby="basic-addon2 ">
+                      [formControl]="projectSearch" aria-label="Recipient's username" aria-describedby="basic-addon2 ">
                     <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Tìm
+                      <button class="btn btn-outline-secondary" type="button" (click)="searchProject()">Tìm
                         kiếm</button>
                     </div>
                   </div>
@@ -84,7 +84,7 @@
                   <td>{{project.json_data}}</td>
                   <td style="display: flex;justify-content: space-evenly;align-items: center;">
                     <button type="button" class="btn btn-outline-success" data-toggle="modal"
-                      data-target="#exampleModal-1">Sửa</button>
+                      data-target="#exampleModal-1" (click)="selectProject(project)">Sửa</button>
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal"
                       data-target="#exampleModal-2" (click)="selectProject(project)">Xóa</button>
                   </td>
@@ -129,19 +129,19 @@
                 <div class="form-group">
                   <label for="">Tên bài giảng</label>
                   <select class="custom-select" id="inputGroupSelect04-1" formControlName="pGroupName">
-                    <option *ngFor="let d of syllabuss" [ngValue]="d">{{d.name}}</option>
+                    <option *ngFor="let d of syllabuss" [ngValue]="d.id">{{d.name}}</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="">Nội dung bài học</label>
-                  <input type="text" name="pDescription" id="pDescription" class="form-control"
-                    placeholder="Nhập nội dung bài học" aria-describedby="helpId" formControlName="pDescription">
+                  <textarea type="text" name="pDescription" id="pDescription" class="form-control"
+                    placeholder="Nhập nội dung bài học" aria-describedby="helpId" formControlName="pDescription" rows="10"></textarea>
                 </div>
                 <div class="form-group">
                   <label for="">Loại bài học</label>
                   <!-- <input type="text" name="pType" id="pType" class="form-control" placeholder="Loại bài học" aria-describedby="helpId"
                     formControlName="pType"> -->
-                  <select class="custom-select"  formControlName="pType" placeholder="Lựa chọn"> 
+                  <select class="custom-select" formControlName="pType" placeholder="Lựa chọn">
                     <option [ngValue]="1">Trắc nghiệm</option>
                     <option [ngValue]="2">Thực Hành</option>
                   </select>
@@ -150,7 +150,7 @@
               <div class="col-12 col-md-6">
                 <div class="form-group">
                   <label for="">Bài tập</label>
-                  <textarea name="pJsonData" id="pJsonData" rows="10" class="form-control" placeholder="Nhập bài tập"
+                  <textarea name="pJsonData" id="pJsonData"  rows="21" class="form-control" placeholder="Nhập bài tập"
                     aria-describedby="helpId" formControlName="pJsonData"></textarea>
                 </div>
               </div>
@@ -167,44 +167,70 @@
 </form>
 
 <!-- Modal -->
-<!-- <form [formGroup]="projectGroup">
-    <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-1"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel-1">Sửa bài học</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="">Tên bài học</label>
-              <input type="text" name="sName" id="sName" class="form-control" placeholder="Nhập tên phòng"
-                aria-describedby="helpId" formControlName="name">
+<form [formGroup]="projectGroup">
+  <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Sửa bài học</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Tên bài học</label>
+                  <input type="text" name="pName-1" id="pName-1" class="form-control" placeholder="Nhập tên bài học"
+                    aria-describedby="helpId" formControlName="pName">
+                </div>
+                <div class="form-group">
+                  <label for="">Tên bài giảng</label>
+                  <select class="custom-select" formControlName="pIdSyllabus">
+                    <option *ngFor="let d of syllabuss" [ngValue]="d.id">{{d.name}}</option >
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">Nội dung bài học</label>
+                  <textarea type="text" name="pDescription-1" id="pDescription-1" class="form-control"
+                    placeholder="Nhập nội dung bài học" aria-describedby="helpId" formControlName="pDescription" rows="10"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="">Loại bài học</label>
+                  <!-- <input type="text" name="pType" id="pType" class="form-control" placeholder="Loại bài học" aria-describedby="helpId"
+                    formControlName="pType"> -->
+                  <select class="custom-select" formControlName="pType" placeholder="Lựa chọn">
+                    <option [ngValue]="1">Trắc nghiệm</option>
+                    <option [ngValue]="2">Thực Hành</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Bài tập</label>
+                  <textarea name="pJsonData-1" id="pJsonData-1" rows="21" class="form-control" placeholder="Nhập bài tập"
+                    aria-describedby="helpId" formControlName="pJsonData"></textarea>
+                </div>
+              </div>
             </div>
-            <div class="form-group">
-              <label for="">Tên bài giảng</label>
-              <select class="custom-select" id="inputGroupSelect204" 
-                formControlName="idGroup">
-                <option *ngFor="let gr of syllabuss" [ngValue]="gr">{{gr.name}}</option>
-              </select>
-            </div>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" >Lưu</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateProject()">Lưu</button>
         </div>
       </div>
     </div>
-  </form> -->
+  </div>
+</form>
 
 <!-- Modal -->
 <form [formGroup]="projectGroup">
   <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
-    aria-hidden="true">
+    aria-hidden="true" style="padding-right: 0;">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

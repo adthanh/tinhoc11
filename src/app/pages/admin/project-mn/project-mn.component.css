@@ -64,14 +64,18 @@
 
 @media (min-width: 1200px) {
   .modal-dialog {
-    max-width: 80rem;
+    max-width: 100rem;
+    height: 50rem;
     margin: 1.75rem auto;
+  }
+  .modal-content{
+    height: 100%;
   }
 }
 
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
   .modal-dialog {
     max-width: 50rem;
     margin: 1.75rem auto;
   }
-}
+} */

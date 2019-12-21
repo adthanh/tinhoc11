@@ -50,7 +50,7 @@ export class ProjectMnComponent implements OnInit {
     if (!project) {
       return;
     }
-    this.loadProject();
+    this.loadsyllabus();
     this.selectedProject = project;
     this.projectGroup.get('pName').setValue(this.selectedProject.name);
     this.projectGroup.get('id').setValue(this.selectedProject.id);
@@ -89,7 +89,7 @@ export class ProjectMnComponent implements OnInit {
     const request = new ProjectRequest();
     const seft = this.projectGroup.value;
     request.name = seft.pName;
-    request.id_syllabus = seft.pGroupName.id;
+    request.id_syllabus = seft.pGroupName;
     request.description = seft.pDescription;
     request.type = seft.pType;
     request.json_data = seft.pJsonData;
@@ -107,6 +107,44 @@ export class ProjectMnComponent implements OnInit {
   openCreateModal() {
     this.loadsyllabus();
     this.initForm();
+  }
+  
+  searchProject() {
+    if (this.projectSearch.value === '' || this.projectSearch.value == null) {
+      this.loadProject();
+    }
+    else {
+      this.projectService.searchProject(this.projectSearch.value).subscribe(
+        result => {
+          if (result) {
+            this.projects = result;
+          } else {
+            this.projects = [];
+          }
+        }
+      );
+    }
+  }
+
+  updateProject(){
+    const request = new ProjectRequest();
+    const seft = this.projectGroup.value;
+    request.id = seft.id;
+    request.name = seft.pName;
+    request.id_syllabus = seft.pIdSyllabus;
+    request.description = seft.pDescription;
+    request.type = seft.pType;
+    request.json_data = seft.pJsonData;
+    this.projectService.updateProject(request).subscribe(
+      _result => {
+        this.loadProject();
+        this.initForm();
+        alert("Sửa thành công bài giảng");
+      },
+      error => {
+        console.log("error " + error);
+      }
+    );
   }
 
   deleteProject() {

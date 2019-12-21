@@ -52,7 +52,7 @@ export class SyllabusMnComponent implements OnInit {
     this.selectedSyllabus = syllabus;
     this.syllabusGroup.get('name').setValue(this.selectedSyllabus.name);
     this.syllabusGroup.get('id').setValue(this.selectedSyllabus.id);
-    this.syllabusGroup.get('group_name').setValue(this.selectedSyllabus.id);
+    this.syllabusGroup.get('group_name').setValue(this.selectedSyllabus.group_name);
     this.syllabusGroup.get('idGroup').setValue(this.selectedSyllabus.id_group);
   }
 
@@ -117,7 +117,8 @@ export class SyllabusMnComponent implements OnInit {
     const self = this.syllabusGroup.value;
     request.id = self.id;
     request.name = self.name;
-    request.id_group = self.idGroup.id;
+    request.id_group = self.idGroup;
+    console.log(request);
     this.syllabusService.updateSyllabus(request).subscribe(
       _result => {
         this.loadsyllabus();

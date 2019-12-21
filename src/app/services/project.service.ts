@@ -40,7 +40,7 @@ export class ProjectService {
   }
 
   searchProject(name : any){
-    return this.http.get<Project[]>(environment.API_ENDPOINT + '/project/findbyname/' + name)
+    return this.http.get<Project[]>(environment.API_ENDPOINT + '/project/findbyname?name=' + name)
       .pipe(
         map(
           result => {
@@ -68,7 +68,7 @@ export class ProjectService {
   }
 
   deleteProject(id: number){
-    return this.http.delete<Project[]>(environment.API_ENDPOINT + '/project/delete/' + id)
+    return this.http.delete<Project[]>(environment.API_ENDPOINT + '/project/delete?id=' + id)
       .pipe(
         map(
           result => {

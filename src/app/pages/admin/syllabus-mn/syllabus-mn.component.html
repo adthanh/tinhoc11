@@ -122,7 +122,7 @@
             <label for="">Tên nhóm bài giảng</label>
             <select class="custom-select" id="inputGroupSelect04"
               formControlName="idGroup">
-              <option *ngFor="let d of groupSyllabuss" [ngValue]="d">{{d.name}}</option>
+              <option *ngFor="let d of groupSyllabuss" [ngValue]="d.id">{{d.name}}</option>
             </select>
           </div>
         </div>
@@ -157,7 +157,7 @@
             <label for="">Tên nhóm bài giảng</label>
             <select class="custom-select" id="inputGroupSelect204" 
               formControlName="idGroup">
-              <option *ngFor="let gr of groupSyllabuss" [ngValue]="gr">{{gr.name}}</option>
+              <option *ngFor="let gr of groupSyllabuss" [ngValue]="gr.id">{{gr.name}}</option>
             </select>
           </div>
         </div>

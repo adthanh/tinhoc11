@@ -55,7 +55,7 @@ export class GroupSyllabusService {
   //   );
   }
   searchGroupSyllabus(name : any){
-    return this.http.get<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/findbyname/' + name)
+    return this.http.get<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/findbyname?name=' + name)
       .pipe(
         map(
           result => {

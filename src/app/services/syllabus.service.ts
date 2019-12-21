@@ -41,7 +41,7 @@ export class SyllabusService {
   }
 
   searchSyllabus(name : any){
-    return this.http.get<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/findbyname/' + name)
+    return this.http.get<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/findbyname?name=' + name)
       .pipe(
         map(
           result => {
@@ -55,7 +55,7 @@ export class SyllabusService {
   }
 
   updateSyllabus(request: SyllabusRequest){
-    return this.http.post(environment.API_ENDPOINT + '/syllabus/edit/' , request)
+    return this.http.post(environment.API_ENDPOINT + '/syllabus/edit' , request)
       .pipe(
         map(
           result => {
