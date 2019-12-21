@@ -5,12 +5,12 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1>Quản lý bài giảng</h1>
+          <h1>Quản lý nhóm bài giảng</h1>
         </div>
         <div class="col-sm-6">
           <ol class="breadcrumb float-sm-right">
             <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-            <li class="breadcrumb-item active">Quản lý bài giảng</li>
+            <li class="breadcrumb-item active">Quản lý Nhóm bài giảng</li>
           </ol>
         </div>
       </div>
@@ -25,34 +25,22 @@
           <div class="card-header">
             <div class="row main-content-header">
               <div class="col-4">
-                <h3 class="card-title">Quản lý bài giảng</h3>
+                <h3 class="card-title">nhóm bài giảng</h3>
               </div>
               <div class="col-8 main-content-header-right">
                 <span>
                   <div class="input-group">
                     <input type="text" class="form-control" placeholder="Tìm kiếm theo tên"
-                      [formControl]="syllabusSearch" aria-label="Recipient's username" aria-describedby="basic-addon2 ">
+                    [formControl]="groupSyllabusSearch" aria-label="Recipient's username" aria-describedby="basic-addon2">
                     <div class="input-group-append">
-                      <button (click)="searchSyllabus()" class="btn btn-outline-secondary" type="button">Tìm
-                        kiếm</button>
+                      <button (click)="searchGroupSyllabus()" class="btn btn-outline-secondary" type="button">Tìm
+                        kiếm </button>
                     </div>
                   </div>
                 </span>
-                <!-- <span>
-                  <div class="input-group">
-                    <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
-                      <option value="true">Phòng trống</option>
-                      <option value="false" selected>Tất cả</option>
-                    </select>
-                    <div class="input-group-append">
-                      <button class="btn btn-outline-secondary" type="button">Xem danh
-                        sách</button>
-                    </div>
-                  </div>
-                </span> -->
                 <span>
                   <!-- Button trigger modal -->
-                  <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal" (click)="openCreateModal()"
+                  <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal"
                     data-target="#exampleModal">
                     +Thêm
                   </button>
@@ -61,26 +49,28 @@
             </div>
           </div>
           <!-- /.card-header -->
-          <div class="card-body" style="overflow: auto;height: calc(100vh - 234px);">
+          <div class="card-body"  style="overflow: auto;height: calc(100vh - 234px);">
             <table id="example2" class="table table-bordered table-hover custom-table">
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Tên</th>
-                  <th>Nhóm bài giảng</th>
-                  <th>Hành Động</th>
+                  <th>Tên nhóm bài giảng</th>
+                  <th>Ngày tạo</th>
+                  <th>Ngày cập nhật</th>
+                  <th>Hành động</th>
                 </tr>
               </thead>
               <tbody>
-                <tr *ngFor="let syllabus of syllabuss">
-                  <td>{{syllabus.id}}</td>
-                  <td>{{syllabus.name}}</td>
-                  <td>{{syllabus.id_group}}</td>
+                <tr *ngFor="let grSyllabus of groupSyllabuss">
+                  <td>{{grSyllabus.id}}</td>
+                  <td>{{grSyllabus.name}}</td>
+                  <td>{{grSyllabus.created_at}}</td>
+                  <td>{{grSyllabus.updated_at}}</td>
                   <td style="display: flex;justify-content: space-evenly;align-items: center;">
-                    <button type="button" class="btn btn-outline-success" (click)="selectSyllabus(syllabus)" data-toggle="modal"
+                    <button type="button" class="btn btn-outline-success" (click)="selectGroupSyllabus(grSyllabus)" data-toggle="modal"
                     data-target="#exampleModal-1">Sửa</button>
                     <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                    data-target="#exampleModal-2" (click)="selectSyllabus(syllabus)" >Xóa</button>
+                    data-target="#exampleModal-2" (click)="selectGroupSyllabus(grSyllabus)" >Xóa</button>
                   </td>
                 </tr>
               </tbody>
@@ -97,38 +87,38 @@
   <!-- /.content -->
 </div>
 
-
-
 <!-- Modal -->
-<form [formGroup]="syllabusGroup">
+<form [formGroup]="groupSyllabusGroup">
   <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Thêm Bài giảng</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Thêm Nhóm Bài giảng</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="">Tên bài giảng</label>
+            <label for="">Tên Nhóm</label>
             <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên phòng"
               aria-describedby="helpId" formControlName="name">
-            <!-- <small id="helpId" class="text-muted">Help text</small> -->
           </div>
           <div class="form-group">
-            <label for="">Tên nhóm bài giảng</label>
-            <select class="custom-select" id="inputGroupSelect04"
-              formControlName="idGroup">
-              <option *ngFor="let d of groupSyllabuss" [ngValue]="d">{{d.name}}</option>
-            </select>
+            <label for="">Ngày tạo</label>
+            <input type="date" name="createdAt" id="createdAt" class="form-control" placeholder="Nhập tên phòng"
+              aria-describedby="helpId" formControlName="createdAt">
+          </div>
+          <div class="form-group">
+            <label for="">Ngày Cập nhật</label>
+            <input type="date" name="updatedAt" id="updatedAt" class="form-control" placeholder="Nhập tên phòng"
+              aria-describedby="helpId" formControlName="updatedAt">
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createSyllabus()">Lưu</button>
+          <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="createGroupSyllabus()">Thêm</button>
         </div>
       </div>
     </div>
@@ -136,34 +126,27 @@
 </form>
 
 <!-- Modal -->
-<form [formGroup]="syllabusGroup">
+<form [formGroup]="groupSyllabusGroup">
   <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-1"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel-1">Sửa Bài giảng</h5>
+          <h5 class="modal-title" id="exampleModalLabel-1">Sửa Nhóm Bài giảng</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="">Tên bài giảng</label>
+            <label for="">Tên Nhóm</label>
             <input type="text" name="sName" id="sName" class="form-control" placeholder="Nhập tên phòng"
               aria-describedby="helpId" formControlName="name">
-          </div>
-          <div class="form-group">
-            <label for="">Tên nhóm bài giảng</label>
-            <select class="custom-select" id="inputGroupSelect204" 
-              formControlName="idGroup">
-              <option *ngFor="let gr of groupSyllabuss" [ngValue]="gr">{{gr.name}}</option>
-            </select>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateSyllabus()">Lưu</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateGroupSyllabus()">Sửa</button>
         </div>
       </div>
     </div>
@@ -171,25 +154,25 @@
 </form>
 
 <!-- Modal -->
-<form [formGroup]="syllabusGroup">
+<form [formGroup]="groupSyllabusGroup">
   <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
     aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel-2">Xóa Bài giảng</h5>
+          <h5 class="modal-title" id="exampleModalLabel-2">Xóa Nhóm Bài giảng</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <div class="form-group">
-            <label for="">Bạn có muốn xóa bài giảng không ?</label>
+            <label for="">Bạn có muốn xóa nhóm không </label>
           </div>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteSyllabus()">Xóa</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteGroupSyllabus()">Xóa</button>
         </div>
       </div>
     </div>

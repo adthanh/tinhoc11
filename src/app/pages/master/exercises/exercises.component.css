@@ -1,0 +1,75 @@
+.exercises-box {
+  padding-top: 8px;
+}
+.exercises-text {
+  height: calc(100vh - 160px);
+}
+#style-4::-webkit-scrollbar {
+  width: 6px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: #b4b4b4;
+}
+.exercises-code {
+  height: calc(100vh - 160px);
+}
+.scroll {
+  overflow: auto;
+  height: calc(100vh - 231px);
+}
+.exercises-code .form-group {
+  height: 100%;
+  margin: 0;
+}
+.exercises-code .form-group textarea {
+  height: 100%;
+  background: #1f1e2e;
+  color: white;
+  box-shadow: none;
+  border-radius: unset;
+  border: 1px solid #15141f;
+}
+.border-custom {
+  border: unset;
+  border-radius: unset;
+}
+.exercises-code .card-header {
+  border: unset;
+  background: #15141f;
+  color: white;
+}
+.exercises-box .card-header {
+  font-weight: 600;
+  border: unset;
+}
+.scroll-custom {
+  height: calc(100vh - 291px);
+}
+.exercises-code .card-footer {
+  background: #201e2f;
+}
+.exercises-code .card-footer button {
+  background: #4b35ef;
+  box-shadow: unset;
+  border: unset;
+}
+.exercises-code .card-footer button:hover {
+  background: #4229fd;
+}
+.btn-box {
+  height: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.btn-box button {
+  width: 7rem;
+}
+.footer-box-custom .row {
+  margin-top: -23px;
+  height: 41px;
+  background: #f7f7f7;
+  font-weight: 600;
+  color: #484848;
+}

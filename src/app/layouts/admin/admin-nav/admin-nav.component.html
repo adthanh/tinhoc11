@@ -1,7 +1,7 @@
 <!-- Main Sidebar Container -->
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
   <!-- Brand Logo -->
-  <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="brand-link">
+  <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['router-link-active']" class="brand-link">
     <img src="https://carlisletheacarlisletheatre.org/images/admin-icon-7.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
          style="opacity: .8">
     <span class="brand-text font-weight-light">Admin Tin Học 11</span>
@@ -15,7 +15,7 @@
         <img src="https://adminlte.io/themes/dev/AdminLTE/dist/img/avatar.png" class="img-circle elevation-2" alt="User Image">
       </div>
       <div class="info">
-        <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="d-block">Nguyễn Thanh Tùng</a>
+        <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['router-link-active']" class="d-block">Nguyễn Thanh Tùng</a>
       </div>
     </div>
 
@@ -25,7 +25,7 @@
         <!-- Add icons to the links using the .nav-icon class
              with font-awesome or any other icon font library -->
         <li class="nav-item has-treeview menu-open">
-          <a class="nav-link active">
+          <a class="nav-link">
             <i class="nav-icon fas fa-tachometer-alt"></i>
             <p>
               Quản Lý Bài Giảng
@@ -34,19 +34,19 @@
           </a>
           <ul class="nav nav-treeview">
             <li class="nav-item">
-              <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="nav-link">
+              <a [routerLink]="['/admin/group-syllabus']" [routerLinkActive]="['router-link-active']" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Quản nhóm bài giảng</p>
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="nav-link">
+              <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['router-link-active']" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Quản lý bài giảng</p>
               </a>
             </li>
             <li class="nav-item">
-              <a [routerLink]="['/dashboard']" [routerLinkActive]="['router-link-active']" class="nav-link">
+              <a [routerLink]="['/admin/dashboard']" [routerLinkActive]="['router-link-active']" class="nav-link">
                 <i class="far fa-circle nav-icon"></i>
                 <p>Quản lý bài học</p>
               </a>

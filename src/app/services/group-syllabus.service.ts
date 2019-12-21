@@ -1,21 +1,19 @@
-import { RestResult } from './../response/rest-result';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
-import { Syllabus } from '../response/syllabus-dto';
-import { SyllabusRequest } from '../requests/syllabus-request';
+import { GroupSyllabus } from '../response/group-syllabus-dto';
 import { GroupSyllabusRequest } from '../requests/group-syllabus-request';
 
-
-@Injectable({ providedIn: 'root' })
-export class SyllabusService {
+@Injectable({
+  providedIn: 'root'
+})
+export class GroupSyllabusService {
   [x: string]: any;
   constructor(private http: HttpClient) { }
 
-  getAllSyllabus() {
-    return this.http.get<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/getall')
+  getAllGroupSyllabus() {
+    return this.http.get<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/getall')
       .pipe(
         map(
           result => {
@@ -27,26 +25,25 @@ export class SyllabusService {
         ),
       );
   }
-  createSyllabus(request: SyllabusRequest) {
-    return this.http.post<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/create/', request).pipe(
+  createGroupSyllabus(request: GroupSyllabusRequest) {
+    return this.http.post<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/create/', request).pipe(
       map(
         result => {
           return result;
-          
         },
         (error: any) => {
           console.log(error);
         }
       ),
     );
-  }
-  // createSyllabus(name: string, subName: string) {
+  // createGroupSyllabus(createdAt: string, updatedAt: string, name: string) {
   //   let customHeaders = new HttpHeaders();
   //   const payload = new HttpParams()
   //   .set('name', name)
-  //   .set('sub_name', subName);
+  //   .set('created_at', createdAt)
+  //   .set('updated_at', updatedAt);
   //   customHeaders = customHeaders.set('Content-Type', 'application/x-www-form-urlencoded');
-  //   return this.http.post(environment.API_ENDPOINT + '/syllabus/create', payload, {headers: customHeaders}).pipe(
+  //   return this.http.post(environment.API_ENDPOINT + '/groupsyllabus/create', payload, {headers: customHeaders}).pipe(
   //     map(
   //       result => {
   //         return result;
@@ -56,9 +53,9 @@ export class SyllabusService {
   //       }
   //     ),
   //   );
-  // }
-  searchSyllabus(name : any){
-    return this.http.get<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/findbyname/' + name)
+  }
+  searchGroupSyllabus(name : any){
+    return this.http.get<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/findbyname/' + name)
       .pipe(
         map(
           result => {
@@ -70,9 +67,8 @@ export class SyllabusService {
         ),
       );
   }
-
-  updateSyllabus(request: SyllabusRequest){
-    return this.http.post(environment.API_ENDPOINT + '/syllabus/edit/' , request)
+  deleteGroupSyllabus(id: any){
+    return this.http.delete<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/delete?id='+ id)
       .pipe(
         map(
           result => {
@@ -84,8 +80,8 @@ export class SyllabusService {
         ),
       );
   }
-  deleteSyllabus(id: number){
-    return this.http.delete<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/delete?id=' + id)
+  updateGroupSyllabus(request: GroupSyllabusRequest){
+    return this.http.post(environment.API_ENDPOINT + '/groupsyllabus/edit/', request)
       .pipe(
         map(
           result => {
@@ -98,5 +94,3 @@ export class SyllabusService {
       );
   }
 }
-
-
