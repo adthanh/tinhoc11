@@ -28,13 +28,13 @@
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-12 col-lg-4">
               <div class="forgot">
                 <a href="#">I forgot my password</a>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="col-12 col-lg-4">
               <button type="submit" (click)="login();" class="btn btn-primary btn-login">Login</button>
@@ -43,7 +43,7 @@
           <div class="row">
             <div class="col-12 col-lg-4">
               <div class="sign-up-for-free">
-                <a href="#">Not a member yet? <span>Sign up for free</span></a>
+                <a [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']">Not a member yet? <span>Sign up for free</span></a>
               </div>
             </div>
           </div>

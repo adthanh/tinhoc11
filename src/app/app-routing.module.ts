@@ -10,6 +10,7 @@ import {LoginComponent} from './pages/master/login/login.component';
 import {SyllabusMnComponent} from './pages/admin/syllabus-mn/syllabus-mn.component';
 import {ProjectAddMnComponent} from './pages/admin/project-add-mn/project-add-mn.component';
 import { GroupSyllabusComponent } from './pages/admin/group-syllabus/group-syllabus.component';
+import { SignUpComponent } from './pages/master/sign-up/sign-up.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -17,6 +18,7 @@ const APP_ROUTES: Routes = [
       {path: '', component: HomeComponent},
       {path: 'login', component: LoginComponent},
       {path: 'exercises', component: ExercisesComponent},
+      {path: 'signup', component: SignUpComponent},
     ]
   },
   {

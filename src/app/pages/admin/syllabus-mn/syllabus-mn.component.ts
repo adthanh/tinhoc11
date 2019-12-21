@@ -39,7 +39,8 @@ export class SyllabusMnComponent implements OnInit {
     this.syllabusGroup = new FormGroup({
       id: new FormControl(''),
       name: new FormControl('', Validators.required),
-      idGroup: new FormControl('')
+      idGroup: new FormControl(''),
+      group_name:new FormControl('')
     });
   }
 
@@ -51,6 +52,7 @@ export class SyllabusMnComponent implements OnInit {
     this.selectedSyllabus = syllabus;
     this.syllabusGroup.get('name').setValue(this.selectedSyllabus.name);
     this.syllabusGroup.get('id').setValue(this.selectedSyllabus.id);
+    this.syllabusGroup.get('group_name').setValue(this.selectedSyllabus.id);
     this.syllabusGroup.get('idGroup').setValue(this.selectedSyllabus.id_group);
   }
 
@@ -98,6 +100,7 @@ export class SyllabusMnComponent implements OnInit {
     const seft = this.syllabusGroup.value;
     request.name = seft.name;
     request.id_group = seft.idGroup.id;
+    console.log(request);
     this.syllabusService.createSyllabus(request).subscribe(
       _result => {
         this.loadsyllabus();
@@ -141,6 +144,7 @@ export class SyllabusMnComponent implements OnInit {
   }
 
   openCreateModal() {
+    this.loadGroupSyllabus();
     this.initForm();
   }
  

@@ -1,0 +1,58 @@
+<div id="LoginForm" class="login">
+    <div class="container">
+        <div class="login-form">
+            <div class="main-div">
+                <div class="row">
+                    <div class="col-12 col-lg-4">
+                        <div class="panel">
+                            <h2>Đăng kí</h2>
+                        </div>
+                    </div>
+                </div>
+                <form id="Login">
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="form-group">
+                                <label for="">Tên đăng nhập</label>
+                                <input type="username" class="form-control" id="username" 
+                                    name="username">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="form-group">
+                                <label for="">E - Mail</label>
+                                <input type="email" class="form-control" id="email" 
+                                    name="email">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="form-group">
+                                <label for="">Mật khẩu</label>
+                                <input type="password" class="form-control"  name="password"
+                                    id="inputPassword">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <div class="form-group">
+                                <label for="">Nhập lại mật khẩu</label>
+                                <input type="password" class="form-control"  name="cfPassword"
+                                    id="cfPassword">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-lg-4">
+                            <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"><button type="submit" class="btn btn-primary btn-login">Đăng Kí</button></a>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

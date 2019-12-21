@@ -8,9 +8,10 @@ import {ProjectAddMnComponent } from './admin/project-add-mn/project-add-mn.comp
 import {ExercisesComponent } from './master/exercises/exercises.component';
 import {ReactiveFormsModule } from '@angular/forms';
 import { GroupSyllabusComponent } from './admin/group-syllabus/group-syllabus.component';
-
+import { SignUpComponent } from './master/sign-up/sign-up.component';
+import {RouterModule} from '@angular/router';
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, SyllabusMnComponent, ProjectAddMnComponent, ExercisesComponent, GroupSyllabusComponent],
+  declarations: [HomeComponent, LoginComponent, SyllabusMnComponent, ProjectAddMnComponent, ExercisesComponent, GroupSyllabusComponent, SignUpComponent],
   
   exports: [
     HomeComponent,
@@ -21,7 +22,8 @@ import { GroupSyllabusComponent } from './admin/group-syllabus/group-syllabus.co
   imports: [
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ]
   
 })
