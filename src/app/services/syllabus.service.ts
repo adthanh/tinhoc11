@@ -1,12 +1,10 @@
 import { RestResult } from './../response/rest-result';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { map } from 'rxjs/operators';
 import { Syllabus } from '../response/syllabus-dto';
 import { SyllabusRequest } from '../requests/syllabus-request';
-import { GroupSyllabusRequest } from '../requests/group-syllabus-request';
 
 
 @Injectable({ providedIn: 'root' })
@@ -27,6 +25,7 @@ export class SyllabusService {
         ),
       );
   }
+  
   createSyllabus(request: SyllabusRequest) {
     return this.http.post<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/create/', request).pipe(
       map(
@@ -40,23 +39,7 @@ export class SyllabusService {
       ),
     );
   }
-  // createSyllabus(name: string, subName: string) {
-  //   let customHeaders = new HttpHeaders();
-  //   const payload = new HttpParams()
-  //   .set('name', name)
-  //   .set('sub_name', subName);
-  //   customHeaders = customHeaders.set('Content-Type', 'application/x-www-form-urlencoded');
-  //   return this.http.post(environment.API_ENDPOINT + '/syllabus/create', payload, {headers: customHeaders}).pipe(
-  //     map(
-  //       result => {
-  //         return result;
-  //       },
-  //       (error: any) => {
-  //         console.log(error);
-  //       }
-  //     ),
-  //   );
-  // }
+
   searchSyllabus(name : any){
     return this.http.get<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/findbyname/' + name)
       .pipe(
@@ -84,6 +67,7 @@ export class SyllabusService {
         ),
       );
   }
+
   deleteSyllabus(id: number){
     return this.http.delete<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/delete?id=' + id)
       .pipe(
@@ -97,6 +81,24 @@ export class SyllabusService {
         ),
       );
   }
+
+    // createSyllabus(name: string, subName: string) {
+  //   let customHeaders = new HttpHeaders();
+  //   const payload = new HttpParams()
+  //   .set('name', name)
+  //   .set('sub_name', subName);
+  //   customHeaders = customHeaders.set('Content-Type', 'application/x-www-form-urlencoded');
+  //   return this.http.post(environment.API_ENDPOINT + '/syllabus/create', payload, {headers: customHeaders}).pipe(
+  //     map(
+  //       result => {
+  //         return result;
+  //       },
+  //       (error: any) => {
+  //         console.log(error);
+  //       }
+  //     ),
+  //   );
+  // }
 }
 
 

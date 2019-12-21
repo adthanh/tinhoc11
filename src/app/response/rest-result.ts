@@ -1,5 +1,4 @@
 export class RestResult {
-
     status?: string;
     message?: string;
     messages?: string[];

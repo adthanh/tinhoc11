@@ -1,0 +1,77 @@
+.main-content-header {
+  align-items: center;
+}
+.main-content-header span {
+  margin-left: 20px;
+}
+.main-content-header input {
+  font-size: 13px;
+  height: 100%;
+}
+.main-content-header button {
+  font-size: 13px;
+  padding: 0rem 0.75rem;
+}
+.main-content-header select {
+  height: 100%;
+  padding: 0.275rem 1.75rem 0.275rem 0.75rem;
+  font-size: 14px;
+}
+.btn-add {
+  padding: 0.275rem 0.75rem !important;
+}
+.main-content-header-right span {
+  float: right;
+}
+.main-content-header-right input {
+  box-shadow: unset;
+}
+.summernote .btn-group,
+.popover-content .btn-group {
+  background: transparent;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.summernote .btn,
+.note-btn {
+  color: rgba(0, 0, 0, 0.54) !important;
+  background-color: transparent !important;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.42857;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.summernote .dropdown-toggle:after {
+  vertical-align: middle;
+}
+
+/* Border of the Summernote textarea */
+
+.note-editor.note-frame {
+  border: 1px solid rgba(0, 0, 0, 0.14);
+}
+
+.custom-table th {
+  text-align: center;
+}
+
+@media (min-width: 1200px) {
+  .modal-dialog {
+    max-width: 80rem;
+    margin: 1.75rem auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .modal-dialog {
+    max-width: 50rem;
+    margin: 1.75rem auto;
+  }
+}

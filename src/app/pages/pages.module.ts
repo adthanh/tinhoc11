@@ -10,8 +10,9 @@ import {ReactiveFormsModule } from '@angular/forms';
 import { GroupSyllabusComponent } from './admin/group-syllabus/group-syllabus.component';
 import { SignUpComponent } from './master/sign-up/sign-up.component';
 import {RouterModule} from '@angular/router';
+import { ProjectMnComponent } from './admin/project-mn/project-mn.component';
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, SyllabusMnComponent, ProjectAddMnComponent, ExercisesComponent, GroupSyllabusComponent, SignUpComponent],
+  declarations: [HomeComponent, LoginComponent, SyllabusMnComponent, ProjectAddMnComponent, ExercisesComponent, GroupSyllabusComponent, SignUpComponent, ProjectMnComponent],
   
   exports: [
     HomeComponent,

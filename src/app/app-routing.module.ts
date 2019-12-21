@@ -11,6 +11,7 @@ import {SyllabusMnComponent} from './pages/admin/syllabus-mn/syllabus-mn.compone
 import {ProjectAddMnComponent} from './pages/admin/project-add-mn/project-add-mn.component';
 import { GroupSyllabusComponent } from './pages/admin/group-syllabus/group-syllabus.component';
 import { SignUpComponent } from './pages/master/sign-up/sign-up.component';
+import { ProjectMnComponent } from './pages/admin/project-mn/project-mn.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -25,7 +26,8 @@ const APP_ROUTES: Routes = [
     path: 'admin', component: AdminComponent, data: {title: 'Secure Views'}, children: [
       {path: 'dashboard', component: SyllabusMnComponent},
       {path: 'group-syllabus', component: GroupSyllabusComponent},
-      {path: 'lesson', component: ProjectAddMnComponent},
+      {path: 'project', component: ProjectAddMnComponent},
+      {path: 'project-mn', component: ProjectMnComponent},
     ], canActivate: [Guard]
   }
 ];

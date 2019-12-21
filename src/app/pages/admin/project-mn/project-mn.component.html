@@ -1,0 +1,228 @@
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Quản lý bài học</h1>
+        </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý bài học</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row main-content-header">
+              <div class="col-4">
+                <h3 class="card-title">Bài học</h3>
+              </div>
+              <div class="col-8 main-content-header-right">
+                <span>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên"
+                      aria-label="Recipient's username" aria-describedby="basic-addon2 ">
+                    <div class="input-group-append">
+                      <button class="btn btn-outline-secondary" type="button">Tìm
+                        kiếm</button>
+                    </div>
+                  </div>
+                </span>
+                <!-- <span>
+                    <div class="input-group">
+                      <select class="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
+                        <option value="true">Phòng trống</option>
+                        <option value="false" selected>Tất cả</option>
+                      </select>
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button">Xem danh
+                          sách</button>
+                      </div>
+                    </div>
+                  </span> -->
+                <span>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal"
+                    data-target="#exampleModal" (click)="openCreateModal()">
+                    +Thêm
+                  </button>
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body" style="overflow: auto;height: calc(100vh - 234px);">
+            <table id="example2" class="table table-bordered table-hover custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tên</th>
+                  <th>Bài giảng</th>
+                  <th>Nội dung bài học</th>
+                  <th>Loại bài học</th>
+                  <th>Bài tập</th>
+                  <th>Hành Động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let project of projects">
+                  <td>{{project.id}}</td>
+                  <td>{{project.name}}</td>
+                  <td>{{project.syllabus_name}}</td>
+                  <td>{{project.description}}</td>
+                  <td>{{project.type}}</td>
+                  <td>{{project.json_data}}</td>
+                  <td style="display: flex;justify-content: space-evenly;align-items: center;">
+                    <button type="button" class="btn btn-outline-success" data-toggle="modal"
+                      data-target="#exampleModal-1">Sửa</button>
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                      data-target="#exampleModal-2" (click)="selectProject(project)">Xóa</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <!-- /.card-body -->
+        </div>
+        <!-- /.card -->
+      </div>
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+
+
+<!-- Modal -->
+<form [formGroup]="projectGroup">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thêm bài học</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Tên bài học</label>
+                  <input type="text" name="pName" id="pName" class="form-control" placeholder="Nhập tên bài học"
+                    aria-describedby="helpId" formControlName="pName">
+                </div>
+                <div class="form-group">
+                  <label for="">Tên bài giảng</label>
+                  <select class="custom-select" id="inputGroupSelect04-1" formControlName="pGroupName">
+                    <option *ngFor="let d of syllabuss" [ngValue]="d">{{d.name}}</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="">Nội dung bài học</label>
+                  <input type="text" name="pDescription" id="pDescription" class="form-control"
+                    placeholder="Nhập nội dung bài học" aria-describedby="helpId" formControlName="pDescription">
+                </div>
+                <div class="form-group">
+                  <label for="">Loại bài học</label>
+                  <!-- <input type="text" name="pType" id="pType" class="form-control" placeholder="Loại bài học" aria-describedby="helpId"
+                    formControlName="pType"> -->
+                  <select class="custom-select"  formControlName="pType" placeholder="Lựa chọn"> 
+                    <option [ngValue]="1">Trắc nghiệm</option>
+                    <option [ngValue]="2">Thực Hành</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-12 col-md-6">
+                <div class="form-group">
+                  <label for="">Bài tập</label>
+                  <textarea name="pJsonData" id="pJsonData" rows="10" class="form-control" placeholder="Nhập bài tập"
+                    aria-describedby="helpId" formControlName="pJsonData"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createProject()">Lưu</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<!-- Modal -->
+<!-- <form [formGroup]="projectGroup">
+    <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-1"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel-1">Sửa bài học</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label for="">Tên bài học</label>
+              <input type="text" name="sName" id="sName" class="form-control" placeholder="Nhập tên phòng"
+                aria-describedby="helpId" formControlName="name">
+            </div>
+            <div class="form-group">
+              <label for="">Tên bài giảng</label>
+              <select class="custom-select" id="inputGroupSelect204" 
+                formControlName="idGroup">
+                <option *ngFor="let gr of syllabuss" [ngValue]="gr">{{gr.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+            <button type="button" class="btn btn-primary" data-dismiss="modal" >Lưu</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form> -->
+
+<!-- Modal -->
+<form [formGroup]="projectGroup">
+  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel-2">Xóa bài học</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Bạn có muốn xóa bài học không ?</label>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteProject()">Xóa</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
