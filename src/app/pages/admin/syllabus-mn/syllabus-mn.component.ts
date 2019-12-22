@@ -99,7 +99,7 @@ export class SyllabusMnComponent implements OnInit {
     const request = new SyllabusRequest();
     const seft = this.syllabusGroup.value;
     request.name = seft.name;
-    request.id_group = seft.idGroup.id;
+    request.id_group = seft.idGroup;
     console.log(request);
     this.syllabusService.createSyllabus(request).subscribe(
       _result => {
