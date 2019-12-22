@@ -6,6 +6,7 @@
           <div class="col-12 col-lg-4">
             <div class="panel">
               <h2>Log In to Codecademy</h2>
+              <small style="color: red;">{{error}}</small>
             </div>
           </div>
         </div>
@@ -14,7 +15,9 @@
             <div class="col-12 col-lg-4">
               <div class="form-group">
                 <label for="">Email or username</label>
-                <input type="username" class="form-control" id="username" formControlName="UserName" name="username">
+                <input type="username" class="form-control" id="username" formControlName="UserName" name="username" email required>
+                <small *ngIf="LoginForm.get('UserName').invalid && LoginForm.get('UserName').touched"
+                  class="text-muted">Email is errors</small>
               </div>
             </div>
           </div>
@@ -24,6 +27,8 @@
                 <label for="">Password</label>
                 <input type="password" class="form-control" formControlName="Password" name="password"
                   id="inputPassword">
+                <small *ngIf="LoginForm.get('Password').invalid && LoginForm.get('Password').touched"
+                  class="text-muted">Pass is errors</small>
               </div>
             </div>
           </div>

@@ -1,0 +1,17 @@
+.avatar-user{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.avatar-user img{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;  
+}
+.avatar-user span{
+    margin-right: 20px;
+}

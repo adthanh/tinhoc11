@@ -100,3 +100,7 @@
     font-size: 13px;
     text-decoration: none;
   }
+
+  #LoginForm small{
+    color: red !important;
+  }

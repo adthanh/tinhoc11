@@ -11,8 +11,9 @@ import { GroupSyllabusComponent } from './admin/group-syllabus/group-syllabus.co
 import { SignUpComponent } from './master/sign-up/sign-up.component';
 import {RouterModule} from '@angular/router';
 import { ProjectMnComponent } from './admin/project-mn/project-mn.component';
+import { UserComponent } from './admin/user/user.component';
 @NgModule({
-  declarations: [HomeComponent, LoginComponent, SyllabusMnComponent, ProjectAddMnComponent, ExercisesComponent, GroupSyllabusComponent, SignUpComponent, ProjectMnComponent],
+  declarations: [HomeComponent, LoginComponent, SyllabusMnComponent, ProjectAddMnComponent, ExercisesComponent, GroupSyllabusComponent, SignUpComponent, ProjectMnComponent, UserComponent],
   
   exports: [
     HomeComponent,

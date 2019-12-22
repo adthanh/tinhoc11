@@ -3,9 +3,8 @@
     <div class="container">
       <nav class="navbar navbar-expand-lg navbar-light nav-menu-custom">
         <a class="navbar-brand nav-brand-custom" href="#">Website Tin Học 11</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -24,8 +23,24 @@
             <!-- <a class="mr-sm-2 nav-form-a">
                 <fa-icon [icon]="faSearch"></fa-icon>
             </a> -->
-            <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"><button class="btn btn-primary mr-sm-2 nav-form-btn-login" type="submit">Login</button></a>
-            <a [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']"><button class="btn btn-primary my-sm-0 nav-form-btn" type="submit">SignUp</button></a> 
+            <a *ngIf="login" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"><button
+                class="btn btn-primary mr-sm-2 nav-form-btn-login" type="submit">Login</button></a>
+            <!-- <span class="avatar-user">
+              <img *ngIf="!login" src="https://adminlte.io/themes/dev/AdminLTE/dist/img/avatar.png"
+                class="img-circle elevation-2" alt="User Image">
+            </span> -->
+            <span *ngIf="!login" class="dropdown avatar-user">
+              <span>Nguyễn Thanh Tùng</span>
+              <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBW5E3y.img?h=552&w=750&m=6&q=60&u=t&o=f&l=f"
+              class="img-circle elevation-2 dropdown-toggle" alt="User Image" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                <a class="dropdown-item" href="#" [routerLink]="['/admin']" [routerLinkActive]="['router-link-active']">Quản lý</a>
+                <a class="dropdown-item" *ngIf="!login" (click)='logout()'>Logout</a>
+              </div>
+            </span>
+            <a *ngIf="login" [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']"><button
+                class="btn btn-primary my-sm-0 nav-form-btn" type="submit">SignUp</button></a>
           </form>
         </div>
       </nav>

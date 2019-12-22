@@ -6,16 +6,20 @@
                     <div class="col-12 col-lg-4">
                         <div class="panel">
                             <h2>Đăng kí</h2>
+                            <small style="color: red;">{{error}}</small>
                         </div>
                     </div>
                 </div>
-                <form id="Login">
+                <form id="Login" [formGroup]="signUpForm" (ngSubmit)="OnGetToken()">
                     <div class="row">
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
-                                <label for="">Tên đăng nhập</label>
-                                <input type="username" class="form-control" id="username" 
+                                <label for="">Tên tài khoản </label>
+                                <input type="username" class="form-control" formControlName="username" id="username"
                                     name="username">
+                                <small
+                                    *ngIf="signUpForm.get('username').touched && signUpForm.get('username').errors?.required"
+                                    class="text-muted">Nhập tên tài khoản </small>
                             </div>
                         </div>
                     </div>
@@ -23,8 +27,11 @@
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label for="">E - Mail</label>
-                                <input type="email" class="form-control" id="email" 
-                                    name="email">
+                                <input type="email" class="form-control" formControlName="email" id="email" name="email"
+                                    email required>
+                                <small
+                                    *ngIf="signUpForm.get('email').touched && signUpForm.get('email').errors?.required"
+                                    class="text-muted">Nhập Email</small>
                             </div>
                         </div>
                     </div>
@@ -32,8 +39,11 @@
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label for="">Mật khẩu</label>
-                                <input type="password" class="form-control"  name="password"
+                                <input type="password" class="form-control" formControlName="password" name="password"
                                     id="inputPassword">
+                                <small
+                                    *ngIf="signUpForm.get('password').touched && signUpForm.get('password').errors?.required"
+                                    class="text-muted">Nhập mật khẩu</small>
                             </div>
                         </div>
                     </div>
@@ -41,14 +51,18 @@
                         <div class="col-12 col-lg-4">
                             <div class="form-group">
                                 <label for="">Nhập lại mật khẩu</label>
-                                <input type="password" class="form-control"  name="cfPassword"
-                                    id="cfPassword">
+                                <input type="password" class="form-control" formControlName="cfPassword"
+                                    name="cfPassword" id="cfPassword">
+                                <small
+                                    *ngIf="signUpForm.get('cfPassword').touched && signUpForm.get('cfPassword').errors?.required"
+                                    class="text-muted">Nhập lại mật khẩu</small>
                             </div>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-12 col-lg-4">
-                            <a [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"><button type="submit" class="btn btn-primary btn-login">Đăng Kí</button></a>
+                            <button [disabled]="!signUpForm.valid" type="submit" class="btn btn-primary btn-login">Đăng
+                                Kí</button>
                         </div>
                     </div>
                 </form>

@@ -2,22 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { map, catchError } from 'rxjs/operators';
-import { LoginRequest } from '../requests/login-request';
-
-
-
+import { SignUpRequest } from '../requests/sign-up-request';
 @Injectable({
   providedIn: 'root'
 })
-export class LoginService {
-  error(message: any, arg1: string) {
+export class SignUpService {
+  UserAuthentication(request: SignUpRequest) {
     throw new Error("Method not implemented.");
   }
 
   constructor(private http: HttpClient) { }
 
-  UserAuthentication(request: LoginRequest, errorCb: any) {
-    return this.http.post(environment.API_POINT + '/token', request)
+  getRegister(request : SignUpRequest, errorCb: any) {
+    return this.http.post(environment.API_ENDPOINT + '/register', request)
       .pipe(
         map(
           result => {
@@ -30,9 +27,5 @@ export class LoginService {
           }
         ),
       );
-  }
-
-  logout() {
-    window.sessionStorage.removeItem('userToken');
   }
 }

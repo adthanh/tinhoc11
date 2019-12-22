@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_ENDPOINT: 'http://localhost:50000/api'
+  API_ENDPOINT: 'http://localhost:50000/api',
+  API_POINT: 'http://localhost:50000/oauth',
 };
 
 /*

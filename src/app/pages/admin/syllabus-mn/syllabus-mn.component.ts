@@ -118,7 +118,6 @@ export class SyllabusMnComponent implements OnInit {
     request.id = self.id;
     request.name = self.name;
     request.id_group = self.idGroup;
-    console.log(request);
     this.syllabusService.updateSyllabus(request).subscribe(
       _result => {
         this.loadsyllabus();

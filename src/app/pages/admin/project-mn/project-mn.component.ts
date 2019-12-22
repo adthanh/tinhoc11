@@ -110,7 +110,7 @@ export class ProjectMnComponent implements OnInit {
   }
   
   searchProject() {
-    if (this.projectSearch.value === '' || this.projectSearch.value == null) {
+    if (this.projectSearch.value === '' || this.projectSearch.value === null) {
       this.loadProject();
     }
     else {
