@@ -415,7 +415,7 @@ body {
 .item-lesson ul {
   margin: 0;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   list-style: none;
   padding: 0;
@@ -423,6 +423,9 @@ body {
 .item-lesson ul li {
   float: left;
   padding: 2rem 2rem;
+}
+.item-lesson ul li h3{
+  text-align: left;
 }
 .item-lesson #item-1 {
   font-size: 3rem;
@@ -432,11 +435,18 @@ body {
 }
 .item-lesson #item-2 {
   text-align: left;
+  width: 74%;
 }
 .item-lesson #item-2 h3,
 .item-lesson #item-3 span,
 .item-lesson #item-5 span {
   color: #3d65c2;
+}
+
+.item-lesson #item-2 h3:hover,
+.item-lesson #item-3 span:hover,
+.item-lesson #item-5 span:hover{
+  color: #24396b;
 }
 .item-lesson #item-2 h3,
 .item-lesson #item-2 p {
@@ -456,6 +466,11 @@ body {
 }
 .item-lesson #item-5 span {
   font-weight: 400;
+}
+
+.item-lesson #item-4 button:hover{
+  background-color: #225470;
+  color: #fff;
 }
 .lesson {
   border-radius: 4px;

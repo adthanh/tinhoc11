@@ -1,6 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { LoginService } from 'src/app/services/login.service';
 
 @Component({
@@ -12,29 +12,29 @@ export class HeaderComponent implements OnInit {
   [x: string]: any;
   faSearch = faSearch;
 
-  constructor(private router: Router, private loginService: LoginService) {
-    
-    if (window.sessionStorage.getItem('userToken') != null) {
-      this.isLogin = false;
-    }
-    else {
-      this.isLogin = true;
-    }
-  }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private loginService: LoginService
+  ) {}
 
-  // @HostBinding('class.is-open')
-  isLogin = false;
-
-  // toggle() {
-  //   this.isLogin = !this.isLogin;
-  // }
+  isLogin: boolean = true;
 
   ngOnInit() {
+    if (window.sessionStorage.getItem('userToken') != null) {
+      this.isLogin = true;
+    }
+    else {
+      this.isLogin = false;
+    }
+
+    // this.isLogin = this.route.snapshot.params['isLogin'];
+
   }
 
   logout() {
     this.loginService.logout();
-    this.isLogin = true;
+    this.isLogin = false;
     this.router.navigate(['/login']);
   }
 

@@ -1,3 +1,4 @@
+
 <div class="home">
   <div class="home-top">
     <div class="container-fluid">
@@ -5,16 +6,17 @@
         <div class="col-12">
           <div class="home-btn-reset">
             <button type="button" class="btn btn-primary home-btn-reset"><i
-              class="fa fa-refresh fa-spin fa-3x fa-fw"></i>Reset Progress</button>
+                class="fa fa-refresh fa-spin fa-3x fa-fw"></i>Tải lại trang</button>
           </div>
         </div>
       </div>
     </div>
     <div class="container">
       <div class="home-header">
-        <h2>Introduction to JavaScript</h2>
-        <p>Learn the JavaScript fundamentals you'll need for front-end or back-end development.</p>
-        <button type="button" class="btn btn-primary">RESUME <span>72%</span></button>
+        <h2>Pascal</h2>
+        <p>Pascal là một ngôn ngữ lập trình cho máy tính thuộc dạng mệnh lệnh và thủ tục</p>
+        <!-- <button type="button" class="btn btn-primary">Hoàn thành <span>72%</span></button> -->
+        <button type="button" class="btn btn-primary">Bắt đầu <span>0%</span></button>
       </div>
     </div>
     <img src="https://www.codecademy.com/webpack/bf5c2cdedc7008c04ffe0b974fcd41b1.svg" alt="" srcset="">
@@ -25,9 +27,9 @@
       <nav>
         <div class="nav home-body-cuttom" id="nav-tab" role="tablist">
           <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab"
-             aria-controls="nav-home" aria-selected="true">Overview</a>
+            aria-controls="nav-home" aria-selected="true">Tổng Quát</a>
           <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab"
-             aria-controls="nav-profile" aria-selected="false">Syllabus</a>
+            aria-controls="nav-profile" aria-selected="false">Bài giảng</a>
         </div>
       </nav>
       <div class="tab-content mg-box" id="nav-tabContent">
@@ -36,35 +38,33 @@
             <div class="row">
               <div class="col-12 col-lg-8">
                 <div class="content-text" style="margin-left: 15px;">
-                  <h3>Why Learn C#?</h3>
-                  <p>C# is one of the most popular programming languages and can be used for a variety
-                    of things, including mobile applications, game development, and enterprise
-                    software. Knowing C# opens a great deal of doors for you as a developer. </p>
-                  <h3>Take-Away Skills</h3>
-                  <p>In this course, you’ll be exposed to fundamental programming concepts using C#
-                    and start writing programs right away. You’ll build several projects to help you
-                    practice and test your knowledge using quizzes. </p>
-                  <h3>Upcoming Releases</h3>
-                  <p>We’re continuing to build new and exciting content for this course! Keep an eye
-                    out in upcoming months for new modules that cover object-oriented programming
-                    (OOP), control flow, arrays, and loops. </p>
+                  <h3>Tại sao chúng ta phải học Pascal?</h3>
+                  <p>Pascal là một ngôn ngữ lập trình cho máy tính thuộc dạng mệnh lệnh và thủ tục, được Niklaus Wirth
+                    phát triển vào năm 1970. Pascal là ngôn ngữ lập trình đặc biệt thích hợp cho kiểu lập trình cấu trúc
+                    & cấu trúc dữ liệu, và được đặt theo tên của nhà toán học, triết gia và nhà vật lí người Pháp,
+                    Blaise Pascal </p>
+                  <h3>Thành phần của Pascal</h3>
+                  <p>Phần khai báo: Dùng để khai báo tên chương trình, thư viện, hằng, biến và chương trình con được sử
+                    dụng trong chương trình chính (có thể có hoặc không).
+                    Phân thân: Là dãy các câu lệnh được chương trình chính thực hiện, bắt đầu bằng từ khóa Begin và từ
+                    khóa End.(bắt buộc phải có trong chương trình).</p>
                 </div>
               </div>
               <div class="col-12 col-lg-4 col-custom" style="text-align: -webkit-center;">
                 <div class="course-information">
                   <ul>
                     <li>
-                      <p>Join</p>
-                      <p class="text-large-size">45,000,000 +</p>
-                      <p>Codecademy learners</p>
+                      <p>Thành viên</p>
+                      <p class="text-large-size">45 +</p>
+                      <p>Số lượng thành viên</p>
                     </li>
                     <li>
-                      <p>Time to Complete</p>
-                      <p class="text-large-size mh-0">25 Hours</p>
+                      <p>Thời gian hoàn thành</p>
+                      <p class="text-large-size mh-0">25 Giờ</p>
                     </li>
                     <li>
-                      <p>Prerequisites</p>
-                      <p class="text-large-size mh-0">None</p>
+                      <p>Điều kiện tiên quyết</p>
+                      <p class="text-large-size mh-0">Không</p>
                     </li>
                   </ul>
                 </div>
@@ -76,23 +76,19 @@
               <div class="col-12 col-sm-11 col-lg-10">
                 <div>
                   <div class="list-lesson">
-                    <h3>WHAT YOU'LL LEARN</h3>
+                    <h3>Danh sách Bài giảng</h3>
                     <div class="lesson">
-                      <div class="item-lesson">
-                        <ul>
+                      <div class="item-lesson" *ngFor="let item of projects let i = index trackBy: trackById">
+                        <ul *ngIf="!(i >= 4)">
                           <li id="item-1">
-                            1
+                            {{i + 1}}
                           </li>
                           <li id="item-2">
-                            <h3>Elements and Structure</h3>
-                            <p>Learn about HTML elements and structure, the building blocks
-                              of
-                              websites.</p>
+                            <h3>{{item.syllabus_name}}</h3>
                           </li>
-                          <li id="item-3" class="d-none d-sm-block"><span>View Details</span>
-                          </li>
-                          <li id="item-4" class="d-none d-sm-block"><button type="button"
-                                                                            class="btn btn-outline-success">Start</button>
+                          <li id="item-4" class="d-none d-sm-block" [routerLink]="['/exercises']"
+                            [routerLinkActive]="['router-link-active']"><button type="button"
+                              class="btn btn-outline-success">Start</button>
                           </li>
                         </ul>
                       </div>
@@ -107,20 +103,18 @@
               <div class="row justify-content">
                 <div class="col-12 col-lg-6">
                   <div class="introducing-image">
-                    <img src="https://miro.medium.com/max/1614/1*twIaUZt3zZCQiyfCbOkWqQ.png"
-                         class="w-100" alt="">
+                    <img src="https://miro.medium.com/max/1614/1*twIaUZt3zZCQiyfCbOkWqQ.png" class="w-100" alt="">
                   </div>
                 </div>
                 <div class="col-12 col-lg-6 ">
                   <div class="slogan">
-                                        <span class="quote-icon-left"><i class="fa fa-quote-left"
-                                                                         aria-hidden="true"></i></span>
+                    <span class="quote-icon-left"><i class="fa fa-quote-left" aria-hidden="true"></i></span>
                     Đừng dại mà quen bọn ai-ti
                     (IT).<br>
                     Chúng nó khô khan, lãng mạn gì?<br>
                     Viết thư tán gái thì kinh dị.<br>
-                    Chúng viết bằng gì? Ngôn ngữ C.<span class="quote-icon-right"><i
-                    class="fa fa-quote-right" aria-hidden="true"></i></span>
+                    Chúng viết bằng gì? Ngôn ngữ C.<span class="quote-icon-right"><i class="fa fa-quote-right"
+                        aria-hidden="true"></i></span>
                   </div>
                 </div>
               </div>
@@ -131,22 +125,21 @@
           <div class="home-body-syllabus">
             <!-- Collapsible content -->
             <div class="border-box">
-              <div class="row" *ngFor="let item of items">
+              <div class="row" *ngFor="let item of syllabuss let i = index trackBy: trackById">
                 <div class="col-12">
                   <div class="card border-unset">
                     <div class="card-header">
                       <div class="mb-0 d-flex justify-content-sm-start align-items-center">
                         <button class="btn btn-link change-icon" data-toggle="collapse"
-                                [attr.href]="'#multiCollapseExample' + item" role="button"
-                                aria-expanded="false"><i class="fa fa-angle-down"
-                                                         aria-hidden="true"></i></button>
-                        <span class="list-exercise-number">1</span>
-                        <span class="list-exercise">Giới thiệu</span>
+                          [attr.href]="'#multiCollapseExample' + i" role="button" aria-expanded="false"><i
+                            class="fa fa-angle-down" aria-hidden="true"></i></button>
+                        <span class="list-exercise-number">{{i + 1}}</span>
+                        <span class="list-exercise">{{item.name}}</span>
                       </div>
                     </div>
-                    <div class="collapse multi-collapse" [attr.id]="'multiCollapseExample' + item">
+                    <div class="collapse multi-collapse" [attr.id]="'multiCollapseExample' + i">
                       <div class=" card-body border-bottom">
-                        <ul class="item-list-exercise">
+                        <ul class="item-list-exercise" *ngFor="let pro of projects let i = index trackBy: trackById">
                           <li>
                             <a href="#">
                               <div class="itm-exercise-left">
@@ -159,100 +152,15 @@
                                   </div>
                                 </div>
                                 <div class="itm-exercise-text">
-                                  <span>Hello World</span><span
-                                  id="text-2">Interactive
-                                                                        Lesson</span>
+                                  <span>{{pro.name}}</span>
                                 </div>
                               </div>
                               <div class="itm-exercise-right">
                                 <span>16%</span>
                               </div>
                               <div class="let-go">
-                                <span>Let's Go</span><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>
+                                <span>Let's Go</span><i class="fa fa-angle-right" aria-hidden="true"></i>
                               </div>
-
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <div class="itm-exercise-left">
-                                <div class="angle-right-icon">
-                                  <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </div>
-                                <div class="icon-source-code">
-                                  <div class="custom-icon-source">
-                                    <i class="fa fa-code" aria-hidden="true"></i>
-                                  </div>
-                                </div>
-                                <div class="itm-exercise-text">
-                                  <span>Hello World</span><span
-                                  id="text-2">Interactive
-                                                                        Lesson</span>
-                                </div>
-                              </div>
-                              <div class="itm-exercise-right">
-                                <span>16%</span>
-                              </div>
-                              <div class="let-go">
-                                <span>Let's Go</span><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>
-                              </div>
-
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <div class="itm-exercise-left">
-                                <div class="angle-right-icon">
-                                  <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </div>
-                                <div class="icon-source-code">
-                                  <div class="custom-icon-source">
-                                    <i class="fa fa-code" aria-hidden="true"></i>
-                                  </div>
-                                </div>
-                                <div class="itm-exercise-text">
-                                  <span>Hello World</span><span
-                                  id="text-2">Interactive
-                                                                        Lesson</span>
-                                </div>
-                              </div>
-                              <div class="itm-exercise-right">
-                                <span>16%</span>
-                              </div>
-                              <div class="let-go">
-                                <span>Let's Go</span><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>
-                              </div>
-
-                            </a>
-                          </li>
-                          <li>
-                            <a href="#">
-                              <div class="itm-exercise-left">
-                                <div class="angle-right-icon">
-                                  <i class="fa fa-angle-right" aria-hidden="true"></i>
-                                </div>
-                                <div class="icon-source-code">
-                                  <div class="custom-icon-source">
-                                    <i class="fa fa-code" aria-hidden="true"></i>
-                                  </div>
-                                </div>
-                                <div class="itm-exercise-text">
-                                  <span>Hello World</span><span
-                                  id="text-2">Interactive
-                                                                        Lesson</span>
-                                </div>
-                              </div>
-                              <div class="itm-exercise-right">
-                                <span>16%</span>
-                              </div>
-                              <div class="let-go">
-                                <span>Let's Go</span><i class="fa fa-angle-right"
-                                                        aria-hidden="true"></i>
-                              </div>
-
                             </a>
                           </li>
                         </ul>
