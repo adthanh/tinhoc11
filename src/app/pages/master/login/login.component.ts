@@ -1,7 +1,7 @@
 import { HeaderComponent } from './../../../layouts/master/header/header.component';
 import { ConfigDto } from './../../../response/config-dto';
 import { LoginService } from './../../../services/login.service';
-import { Component, OnInit, Input, Output, EventEmitter, } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener, } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, Validators, FormControl } from '@angular/forms';
 import { LoginRequest } from 'src/app/requests/login-request';
@@ -13,6 +13,7 @@ import { LoginRequest } from 'src/app/requests/login-request';
 
 export class LoginComponent implements OnInit {
 
+  @Output() LoginSuccess: EventEmitter<any> = new EventEmitter();
 
   grantType = "password";
   clientId = 2;
@@ -60,5 +61,14 @@ export class LoginComponent implements OnInit {
         this.error = "Đăng nhập không thành công";
       });
   }
+
+
+  // @Input() header: HeaderComponent;
+
+  // @HostListener('click')
+  
+  // click() {
+  //   this.header.toggle();
+  // }
 
 }

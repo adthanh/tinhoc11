@@ -36,23 +36,6 @@ export class GroupSyllabusService {
         }
       ),
     );
-  // createGroupSyllabus(createdAt: string, updatedAt: string, name: string) {
-  //   let customHeaders = new HttpHeaders();
-  //   const payload = new HttpParams()
-  //   .set('name', name)
-  //   .set('created_at', createdAt)
-  //   .set('updated_at', updatedAt);
-  //   customHeaders = customHeaders.set('Content-Type', 'application/x-www-form-urlencoded');
-  //   return this.http.post(environment.API_ENDPOINT + '/groupsyllabus/create', payload, {headers: customHeaders}).pipe(
-  //     map(
-  //       result => {
-  //         return result;
-  //       },
-  //       (error: any) => {
-  //         console.log(error);
-  //       }
-  //     ),
-  //   );
   }
   searchGroupSyllabus(name : any){
     return this.http.get<GroupSyllabus[]>(environment.API_ENDPOINT + '/groupsyllabus/findbyname?name=' + name)
@@ -93,4 +76,22 @@ export class GroupSyllabusService {
         ),
       );
   }
+
+    // createGroupSyllabus(createdAt: string, updatedAt: string, name: string) {
+  //   let customHeaders = new HttpHeaders();
+  //   const payload = new HttpParams()
+  //   .set('name', name)
+  //   .set('created_at', createdAt)
+  //   .set('updated_at', updatedAt);
+  //   customHeaders = customHeaders.set('Content-Type', 'application/x-www-form-urlencoded');
+  //   return this.http.post(environment.API_ENDPOINT + '/groupsyllabus/create', payload, {headers: customHeaders}).pipe(
+  //     map(
+  //       result => {
+  //         return result;
+  //       },
+  //       (error: any) => {
+  //         console.log(error);
+  //       }
+  //     ),
+  //   );
 }

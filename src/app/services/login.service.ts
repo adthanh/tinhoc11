@@ -10,6 +10,7 @@ import { LoginRequest } from '../requests/login-request';
   providedIn: 'root'
 })
 export class LoginService {
+  [x: string]: any;
   error(message: any, arg1: string) {
     throw new Error("Method not implemented.");
   }

@@ -34,7 +34,7 @@ export class GroupSyllabusComponent implements OnInit {
       updatedAt: new FormControl('')
     });
   }
-  
+
   loadGroupSyllabus() {
     this.groupSyllabusService.getAllGroupSyllabus().subscribe(
       (result: GroupSyllabus[]) => {
@@ -51,9 +51,6 @@ export class GroupSyllabusComponent implements OnInit {
     const self = this.groupSyllabusGroup.value;
     const request = new GroupSyllabusRequest();
     request.name = self.name;
-    request.id = self.id;
-    request.created_at = self.createdAt;
-    request.updated_at = self.updatedAt;
     this.groupSyllabusService.createGroupSyllabus(request).subscribe(
       _result => {
         this.loadGroupSyllabus();
@@ -65,11 +62,11 @@ export class GroupSyllabusComponent implements OnInit {
     )
   }
 
-  searchGroupSyllabus(){
-    if(this.groupSyllabusSearch.value === '' || this.groupSyllabusSearch.value == null){
+  searchGroupSyllabus() {
+    if (this.groupSyllabusSearch.value === '' || this.groupSyllabusSearch.value == null) {
       this.loadGroupSyllabus();
     }
-    else{
+    else {
       this.groupSyllabusService.searchGroupSyllabus(this.groupSyllabusSearch.value).subscribe(
         result => {
           if (result) {
@@ -82,7 +79,7 @@ export class GroupSyllabusComponent implements OnInit {
     }
   }
 
-  selectGroupSyllabus(grSyllabus : GroupSyllabus){
+  selectGroupSyllabus(grSyllabus: GroupSyllabus) {
     if (!grSyllabus) {
       return;
     }
@@ -94,12 +91,12 @@ export class GroupSyllabusComponent implements OnInit {
     this.groupSyllabusGroup.get('updatedAt').setValue(this.selectGrSyllabus.updated_at);
   }
 
-  updateGroupSyllabus(){
+  updateGroupSyllabus() {
     const self = this.groupSyllabusGroup.value;
     const request = new GroupSyllabusRequest();
     request.id = self.id;
     request.name = self.name;
-   this.groupSyllabusService.updateGroupSyllabus(request).subscribe(
+    this.groupSyllabusService.updateGroupSyllabus(request).subscribe(
       _result => {
         this.loadGroupSyllabus();
         alert("Sửa thành công nhóm bài giảng");
@@ -110,7 +107,7 @@ export class GroupSyllabusComponent implements OnInit {
     )
   }
 
-  deleteGroupSyllabus(){
+  deleteGroupSyllabus() {
     this.groupSyllabusService.deleteGroupSyllabus(this.selectGrSyllabus.id).subscribe(
       result => {
         this.initForm();

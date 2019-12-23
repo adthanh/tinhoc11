@@ -41,7 +41,7 @@
                   <span>
                     <!-- Button trigger modal -->
                     <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal"
-                      data-target="#exampleModal">
+                      data-target="#exampleModal" (click)="openCreateModal()">
                       +Thêm
                     </button>
                   </span>
@@ -67,10 +67,10 @@
                     <td>{{user.email}}</td>
                     <td>{{user.level}}</td>
                     <td style="display: flex;justify-content: space-evenly;align-items: center;">
-                      <button type="button" class="btn btn-outline-success" (click)="selectUser(grSyllabus)" data-toggle="modal"
+                      <button type="button" class="btn btn-outline-success" (click)="selectUser(user)" data-toggle="modal"
                       data-target="#exampleModal-1">Sửa</button>
                       <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                      data-target="#exampleModal-2" (click)="selectGroupSyllabus(grSyllabus)" >Xóa</button>
+                      data-target="#exampleModal-2" (click)="selectUser(user)" >Xóa</button>
                     </td>
                   </tr>
                 </tbody>
@@ -94,26 +94,26 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Thêm Nhóm Bài giảng</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Thêm thành viên</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="">Tên Nhóm</label>
-              <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên phòng"
-                aria-describedby="helpId" formControlName="name">
+              <label for="">Tên thành viên</label>
+              <input type="text" name="uName-1" id="uName-1" class="form-control" placeholder="Nhập tên thành viên"
+                aria-describedby="helpId" formControlName="uName">
             </div>
             <div class="form-group">
-              <label for="">Ngày tạo</label>
-              <input type="date" name="createdAt" id="createdAt" class="form-control" placeholder="Nhập tên phòng"
-                aria-describedby="helpId" formControlName="createdAt">
+              <label for="">Email</label>
+              <input type="email" name="uEmail-1" id="uEmail-1" class="form-control" placeholder="Nhập email"
+                aria-describedby="helpId" formControlName="uEmail">
             </div>
             <div class="form-group">
-              <label for="">Ngày Cập nhật</label>
-              <input type="date" name="updatedAt" id="updatedAt" class="form-control" placeholder="Nhập tên phòng"
-                aria-describedby="helpId" formControlName="updatedAt">
+              <label for="">Mật khẩu</label>
+              <input type="email" name="uPassword-1" id="uPassword-1" class="form-control" placeholder="Nhập mật khẩu"
+                aria-describedby="helpId" formControlName="uPassword">
             </div>
           </div>
           <div class="modal-footer">
@@ -132,16 +132,35 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel-1">Sửa Nhóm Bài giảng</h5>
+            <h5 class="modal-title" id="exampleModalLabel-1">Sửa thanh viên</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="">Tên Nhóm</label>
-              <input type="text" name="sName" id="sName" class="form-control" placeholder="Nhập tên phòng"
-                aria-describedby="helpId" formControlName="name">
+              <label for="">Tên thành viên</label>
+              <input type="text" name="uName" id="uName" class="form-control" placeholder="Nhập tên thành viên"
+                aria-describedby="helpId" formControlName="uName">
+            </div>
+            <div class="form-group">
+              <label for="">Email</label>
+              <input type="email" name="uEmail" id="uEmail" class="form-control" placeholder="Nhập email"
+                aria-describedby="helpId" formControlName="uEmail">
+            </div>
+            <div class="form-group">
+              <label for="">Mật khẩu</label>
+              <input type="email" name="uPassword" id="uPassword" class="form-control" placeholder="Nhập mật khẩu"
+                aria-describedby="helpId" formControlName="uPassword">
+            </div>
+            <div class="form-group">
+              <label for="">Quyền</label>
+              <!-- <input type="text" name="pType" id="pType" class="form-control" placeholder="Loại bài học" aria-describedby="helpId"
+                formControlName="pType"> -->
+              <select class="custom-select" formControlName="uLevel" placeholder="Lựa chọn">
+                <option [ngValue]="0">0</option>
+                <option [ngValue]="1">1</option>
+              </select>
             </div>
           </div>
           <div class="modal-footer">
@@ -160,14 +179,14 @@
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel-2">Xóa Nhóm Bài giảng</h5>
+            <h5 class="modal-title" id="exampleModalLabel-2">Xóa Thành viên</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
           <div class="modal-body">
             <div class="form-group">
-              <label for="">Bạn có muốn xóa nhóm không </label>
+              <label for="">Bạn có muốn xóa thành viên '{{selectedUser.name}}' không </label>
             </div>
           </div>
           <div class="modal-footer">

@@ -12,6 +12,7 @@ import {ProjectAddMnComponent} from './pages/admin/project-add-mn/project-add-mn
 import { GroupSyllabusComponent } from './pages/admin/group-syllabus/group-syllabus.component';
 import { SignUpComponent } from './pages/master/sign-up/sign-up.component';
 import { ProjectMnComponent } from './pages/admin/project-mn/project-mn.component';
+import { UserComponent } from './pages/admin/user/user.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -28,6 +29,7 @@ const APP_ROUTES: Routes = [
       {path: 'group-syllabus', component: GroupSyllabusComponent},
       {path: 'project', component: ProjectAddMnComponent},
       {path: 'project-mn', component: ProjectMnComponent},
+      {path: 'user', component: UserComponent},
     ], canActivate: [Guard]
   }
 ];
