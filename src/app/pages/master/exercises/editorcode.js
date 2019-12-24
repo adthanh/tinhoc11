@@ -1,4 +1,5 @@
 window.onload = function (e) {
+
   var textarea = document.getElementById("code-editor");
   if (textarea) {
     var codeEditor = CodeMirror.fromTextArea(textarea, {

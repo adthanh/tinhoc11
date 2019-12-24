@@ -9,14 +9,10 @@
             </div>
             <div class="scroll" id="style-4">
               <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">Tên Sylabuss</h6>
-                <h5 class="card-title">Tên Bài học</h5>
-                <p class="card-text">Nội dung bài học</p>
-                <div class="card-header" style="border: unset;">
-                  Hướng dẫn
-                </div>
+                <h6 class="card-subtitle mb-2 text-muted">{{project.name_syllabus}}</h6>
+                <h5 class="card-title">{{project.name}}</h5>
                 <div class="card-body">
-                  <p class="card-text"></p>
+                  <p class="card-text" [innerHTML]="project.description"></p>
                 </div>
               </div>
             </div>
@@ -51,7 +47,7 @@
               <div class="card-body" style="background: #000; height:100%; color: white; white-space: pre-line;">
                 <div *ngIf="error" style="color: red">{{error}}</div>
                 <div>{{output}}</div>
-                <div *ngIf="isDone" style="color: green">code complete</div>
+                <div *ngIf="isError" style="color: green">Bạn đã code đúng rồi nhá :D Hãy qua bài mới nào</div>
               </div>
             </div>
           </div>
@@ -72,11 +68,12 @@
                        *ngFor="let items of item.answers | keyvalue ; let s = index">
                     <input class="form-check-input" type="radio" [attr.name]="'exampleRadios'+ i"
                            [value]="items.s" (change)="onSelectionChange(item, items.key)">
-                    <label class="form-check-label" for='exampleRadios1'>
+                    <label style="margin-left: 10px" class="form-check-label" for='exampleRadios1'>
                       <p>{{items.value}}</p>
                     </label>
                   </div>
                 </div>
+                <p *ngIf="correct">{{correct}}</p>
                 <button type="button" class="btn btn-secondary" (click)="onsubmit()">Kiểm tra</button>
               </div>
             </div>
