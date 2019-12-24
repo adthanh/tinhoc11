@@ -31,6 +31,17 @@ export class HomeComponent implements OnInit {
     this.loadSyllabusByGroup();
     this.getCout();
   }
+  loadProject() {
+    return this.projectService.getAllProject().subscribe(
+      result => {
+        if (result) {
+          this.projects = result;
+        } else {
+          this.projects = [];
+        }
+      }
+    );
+  }
 
   loadSyllabusByGroup() {
     return this.syllabusService.getlistsyllabusbygroup().subscribe(
@@ -49,7 +60,6 @@ export class HomeComponent implements OnInit {
     return this.projectService.getCout().subscribe(
       (result: any) => {
         if (result) {
-          console.log(result);
           this.listCout = result;
           // this.router.navigateByUrl('exercises/',this.project.id);
         } else {
