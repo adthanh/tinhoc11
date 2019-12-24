@@ -17,7 +17,7 @@ export class LoginComponent implements OnInit {
 
   grantType = "password";
   clientId = 2;
-  clientSecret = "P0joSPVnswLhlxCT2VdPcvGyxD2YjiTR5sm6FqEw";
+  clientSecret = "Mbi5mI2yZrkGpkbkoEVrcck8E7Gx3Fa6e34kGdU1";
   isSubmitted = false;
   error = '';
   loading = false;
@@ -66,7 +66,7 @@ export class LoginComponent implements OnInit {
   // @Input() header: HeaderComponent;
 
   // @HostListener('click')
-  
+
   // click() {
   //   this.header.toggle();
   // }

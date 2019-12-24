@@ -12,8 +12,6 @@ import { AdminComponent } from './layouts/admin/admin.component';
 import { MasterModule } from './layouts/master/master.module';
 import { AdminModule } from './layouts/admin/admin.module';
 import { HttpClientModule } from '@angular/common/http';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { StoreModule } from '@ngrx/store';
 @NgModule({
   declarations: [
     AppComponent,

@@ -114,14 +114,13 @@
         <div class="modal-body">
           <div class="form-group">
             <label for="">Tên bài giảng</label>
-            <input type="text" name="name" id="name" class="form-control" placeholder="Nhập tên phòng"
+            <input type="text" name="name" class="form-control" placeholder="Nhập tên bài giảng"
               aria-describedby="helpId" formControlName="name">
             <!-- <small id="helpId" class="text-muted">Help text</small> -->
           </div>
           <div class="form-group">
             <label for="">Tên nhóm bài giảng</label>
-            <select class="custom-select" id="inputGroupSelect04"
-              formControlName="idGroup">
+            <select class="custom-select" formControlName="idGroup">
               <option *ngFor="let d of groupSyllabuss" [ngValue]="d.id">{{d.name}}</option>
             </select>
           </div>
@@ -155,8 +154,7 @@
           </div>
           <div class="form-group">
             <label for="">Tên nhóm bài giảng</label>
-            <select class="custom-select" id="inputGroupSelect204" 
-              formControlName="idGroup">
+            <select class="custom-select" formControlName="idGroup">
               <option *ngFor="let gr of groupSyllabuss" [ngValue]="gr.id">{{gr.name}}</option>
             </select>
           </div>

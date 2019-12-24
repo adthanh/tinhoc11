@@ -1,10 +1,10 @@
-import { ProjectRequest } from './../../../requests/project-request';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ProjectService } from './../../../services/project.service';
-import { Component, OnInit } from '@angular/core';
-import { Syllabus } from 'src/app/response/syllabus-dto';
-import { SyllabusService } from 'src/app/services/syllabus.service';
-import { Project } from 'src/app/response/project-dto';
+import {ProjectRequest} from './../../../requests/project-request';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {ProjectService} from './../../../services/project.service';
+import {Component, OnInit} from '@angular/core';
+import {Syllabus} from 'src/app/response/syllabus-dto';
+import {SyllabusService} from 'src/app/services/syllabus.service';
+import {Project} from 'src/app/response/project-dto';
 
 @Component({
   selector: 'app-project-mn',
@@ -24,10 +24,11 @@ export class ProjectMnComponent implements OnInit {
   projectGroup: FormGroup;
 
   constructor
-    (
-      private projectService: ProjectService,
-      private syllabusService: SyllabusService
-    ) { }
+  (
+    private projectService: ProjectService,
+    private syllabusService: SyllabusService
+  ) {
+  }
 
   ngOnInit() {
     this.loadProject();
@@ -62,15 +63,17 @@ export class ProjectMnComponent implements OnInit {
   }
 
   loadsyllabus() {
-    this.syllabusService.getAllSyllabus().subscribe(
-      result => {
-        if (result) {
-          this.syllabuss = result;
-        } else {
-          this.syllabuss = [];
+    if (this.syllabuss === undefined) {
+      this.syllabusService.getAllSyllabus().subscribe(
+        result => {
+          if (result) {
+            this.syllabuss = result;
+          } else {
+            this.syllabuss = [];
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   loadProject() {
@@ -96,10 +99,10 @@ export class ProjectMnComponent implements OnInit {
     this.projectService.createProject(request).subscribe(
       _result => {
         this.loadProject();
-        alert("Thêm thành công bài học");
+        alert('Thêm thành công bài học');
       },
       error => {
-        console.log("error " + error);
+        console.log('error ' + error);
       }
     );
   }
@@ -108,12 +111,11 @@ export class ProjectMnComponent implements OnInit {
     this.loadsyllabus();
     this.initForm();
   }
-  
+
   searchProject() {
     if (this.projectSearch.value === '' || this.projectSearch.value === null) {
       this.loadProject();
-    }
-    else {
+    } else {
       this.projectService.searchProject(this.projectSearch.value).subscribe(
         result => {
           if (result) {
@@ -126,7 +128,7 @@ export class ProjectMnComponent implements OnInit {
     }
   }
 
-  updateProject(){
+  updateProject() {
     const request = new ProjectRequest();
     const seft = this.projectGroup.value;
     request.id = seft.id;
@@ -139,10 +141,10 @@ export class ProjectMnComponent implements OnInit {
       _result => {
         this.loadProject();
         this.initForm();
-        alert("Sửa thành công bài giảng");
+        alert('Sửa thành công bài giảng');
       },
       error => {
-        console.log("error " + error);
+        console.log('error ' + error);
       }
     );
   }
@@ -152,10 +154,10 @@ export class ProjectMnComponent implements OnInit {
       result => {
         this.initForm();
         this.loadProject();
-        alert("Xóa bài giảng thành công");
+        alert('Xóa bài giảng thành công');
       },
       error => {
-        alert("Lỗi hệ thống không xác định");
+        alert('Lỗi hệ thống không xác định');
       }
     );
   }

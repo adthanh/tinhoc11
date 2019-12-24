@@ -5,7 +5,7 @@
         <div class="row">
           <div class="col-12 col-lg-4">
             <div class="panel">
-              <h2>Log In to Codecademy</h2>
+              <h2>Đăng nhập Website dậy tin lớp 11</h2>
               <small style="color: red;">{{error}}</small>
             </div>
           </div>
@@ -14,21 +14,21 @@
           <div class="row">
             <div class="col-12 col-lg-4">
               <div class="form-group">
-                <label for="">Email or username</label>
+                <label for="">Email</label>
                 <input type="username" class="form-control" id="username" formControlName="UserName" name="username" email required>
                 <small *ngIf="LoginForm.get('UserName').invalid && LoginForm.get('UserName').touched"
-                  class="text-muted">Email is errors</small>
+                  class="text-muted">Email lỗi</small>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-12 col-lg-4">
               <div class="form-group">
-                <label for="">Password</label>
+                <label for="">Mật khẩu</label>
                 <input type="password" class="form-control" formControlName="Password" name="password"
                   id="inputPassword">
                 <small *ngIf="LoginForm.get('Password').invalid && LoginForm.get('Password').touched"
-                  class="text-muted">Pass is errors</small>
+                  class="text-muted">Password lỗi</small>
               </div>
             </div>
           </div>
@@ -41,14 +41,13 @@
           </div> -->
           <div class="row">
             <div class="col-12 col-lg-4">
-              <button type="submit" [disabled]="!LoginForm.valid" class="btn btn-primary btn-login">Login</button>
+              <button type="submit" [disabled]="!LoginForm.valid" class="btn btn-primary btn-login">Đăng nhập</button>
             </div>
           </div>
           <div class="row">
             <div class="col-12 col-lg-4">
               <div class="sign-up-for-free">
-                <a [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']">Not a member yet? <span>Sign
-                    up for free</span></a>
+                <a [routerLink]="['/signup']" [routerLinkActive]="['router-link-active']">Chưa phải thành viên? <span>Đăng ký ngay</span></a>
               </div>
             </div>
           </div>

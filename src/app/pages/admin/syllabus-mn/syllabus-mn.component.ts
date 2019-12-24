@@ -1,13 +1,14 @@
-import { Syllabus } from './../../../response/syllabus-dto';
-import { Component, OnInit } from '@angular/core';
-import { SyllabusService } from 'src/app/services/syllabus.service';
-import { enableProdMode } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { SyllabusRequest } from 'src/app/requests/syllabus-request';
-import { GroupSyllabusService } from 'src/app/services/group-syllabus.service';
-import { GroupSyllabus } from 'src/app/response/group-syllabus-dto';
+import {Syllabus} from './../../../response/syllabus-dto';
+import {Component, OnInit} from '@angular/core';
+import {SyllabusService} from 'src/app/services/syllabus.service';
+import {enableProdMode} from '@angular/core';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {SyllabusRequest} from 'src/app/requests/syllabus-request';
+import {GroupSyllabusService} from 'src/app/services/group-syllabus.service';
+import {GroupSyllabus} from 'src/app/response/group-syllabus-dto';
 
 enableProdMode();
+
 @Component({
   selector: 'app-syllabus-mn',
   templateUrl: './syllabus-mn.component.html',
@@ -28,7 +29,8 @@ export class SyllabusMnComponent implements OnInit {
   constructor(
     private syllabusService: SyllabusService,
     private groupSyllabusService: GroupSyllabusService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
     this.loadsyllabus();
@@ -40,11 +42,11 @@ export class SyllabusMnComponent implements OnInit {
       id: new FormControl(''),
       name: new FormControl('', Validators.required),
       idGroup: new FormControl(''),
-      group_name:new FormControl('')
+      group_name: new FormControl('')
     });
   }
 
-  selectSyllabus(syllabus : Syllabus){
+  selectSyllabus(syllabus: Syllabus) {
     if (!syllabus) {
       return;
     }
@@ -57,13 +59,15 @@ export class SyllabusMnComponent implements OnInit {
   }
 
   loadGroupSyllabus() {
-    this.groupSyllabusService.getAllGroupSyllabus().subscribe(
-      (result: GroupSyllabus[]) => {
-        if (result) {
-          this.groupSyllabuss = result;
+    if (this.groupSyllabuss === undefined) {
+      this.groupSyllabusService.getAllGroupSyllabus().subscribe(
+        (result: GroupSyllabus[]) => {
+          if (result) {
+            this.groupSyllabuss = result;
+          }
         }
-      }
-    );
+      );
+    }
   }
 
   loadsyllabus() {
@@ -81,8 +85,7 @@ export class SyllabusMnComponent implements OnInit {
   searchSyllabus() {
     if (this.syllabusSearch.value === '' || this.syllabusSearch.value == null) {
       this.loadsyllabus();
-    }
-    else {
+    } else {
       this.syllabusService.searchSyllabus(this.syllabusSearch.value).subscribe(
         result => {
           if (result) {
@@ -99,20 +102,20 @@ export class SyllabusMnComponent implements OnInit {
     const request = new SyllabusRequest();
     const seft = this.syllabusGroup.value;
     request.name = seft.name;
+
     request.id_group = seft.idGroup;
-    console.log(request);
     this.syllabusService.createSyllabus(request).subscribe(
       _result => {
         this.loadsyllabus();
-        alert("Thêm thành công bài giảng");
+        alert('Thêm thành công bài giảng');
       },
       error => {
-        console.log("error " + error);
+        console.log('error ' + error);
       }
     );
   }
-  
-  updateSyllabus(){
+
+  updateSyllabus() {
     const request = new SyllabusRequest();
     const self = this.syllabusGroup.value;
     request.id = self.id;
@@ -122,23 +125,23 @@ export class SyllabusMnComponent implements OnInit {
       _result => {
         this.loadsyllabus();
         this.initForm();
-        alert("Sửa thành công bài giảng");
+        alert('Sửa thành công bài giảng');
       },
       error => {
-        console.log("error " + error);
+        console.log('error ' + error);
       }
     );
   }
 
-  deleteSyllabus(){
+  deleteSyllabus() {
     this.syllabusService.deleteSyllabus(this.selectedSyllabus.id).subscribe(
       result => {
         this.initForm();
         this.loadsyllabus();
-        alert("Xóa bài giảng thành công");
+        alert('Xóa bài giảng thành công');
       },
       error => {
-        alert("Lỗi hệ thống không xác định");
+        alert('Lỗi hệ thống không xác định');
       }
     );
   }
@@ -147,5 +150,5 @@ export class SyllabusMnComponent implements OnInit {
     this.loadGroupSyllabus();
     this.initForm();
   }
- 
+
 }
