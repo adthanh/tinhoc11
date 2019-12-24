@@ -13,6 +13,8 @@ import {RouterModule} from '@angular/router';
 import {ProjectMnComponent} from './admin/project-mn/project-mn.component';
 import {UserComponent} from './admin/user/user.component';
 import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
+import { FooterExerComponent } from './master/footer-exer/footer-exer.component';
+import { ProfileUserComponent } from './master/profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import {CKEditorModule} from '@ckeditor/ckeditor5-angular';
     GroupSyllabusComponent,
     SignUpComponent,
     ProjectMnComponent,
-    UserComponent
+    UserComponent,
+    FooterExerComponent,
+    ProfileUserComponent
   ],
 
   exports: [

@@ -77,7 +77,8 @@
                   <td>{{project.id}}</td>
                   <td>{{project.name}}</td>
                   <td>{{project.syllabus_name}}</td>
-                  <td>{{project.type}}</td>
+                  <td *ngIf="project.type == 1">Trắc nghiệm</td>
+                  <td *ngIf="project.type == 2">Thực hành</td>
                   <td style="display: flex;justify-content: space-evenly;align-items: center;">
                     <button type="button" class="btn btn-outline-success" data-toggle="modal"
                       data-target="#exampleModal-1" (click)="selectProject(project)">Sửa</button>

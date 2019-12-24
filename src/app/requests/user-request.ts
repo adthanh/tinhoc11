@@ -4,4 +4,5 @@ export class UserRequest {
     email: string;
     password: string;
     level: number;
+    c_password: string
 }

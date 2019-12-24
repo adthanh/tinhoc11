@@ -21,12 +21,12 @@
             <a *ngIf="!isLogin" [routerLink]="['/login']" [routerLinkActive]="['router-link-active']"><button
                 class="btn btn-primary mr-sm-2 nav-form-btn-login" type="submit">Đăng nhập</button></a>
             <span *ngIf="isLogin" class="dropdown avatar-user">
-              <span>Nguyễn Thanh Tùng</span>
+            <span>{{user.name}}</span>
               <img src="https://img-s-msn-com.akamaized.net/tenant/amp/entityid/BBW5E3y.img?h=552&w=750&m=6&q=60&u=t&o=f&l=f"
               class="img-circle elevation-2 dropdown-toggle" alt="User Image" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item">Thông tin cá nhân</a>
-                <a class="dropdown-item" [routerLink]="['/admin']" [routerLinkActive]="['router-link-active']">Quản lý</a>
+                <a class="dropdown-item" [routerLink]="['/profile']" [routerLinkActive]="['router-link-active']">Thoong tin cá nhân</a>
+                <a class="dropdown-item" *ngIf="isAdmin"  [routerLink]="['/admin']" [routerLinkActive]="['router-link-active']">Quản lý</a>
                 <a class="dropdown-item" *ngIf="isLogin" (click)='logout()'>Đăng xuất</a>
               </div>
             </span>

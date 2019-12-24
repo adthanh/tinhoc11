@@ -28,8 +28,7 @@ export class ProjectMnComponent implements OnInit {
   (
     private projectService: ProjectService,
     private syllabusService: SyllabusService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
     this.loadProject();
