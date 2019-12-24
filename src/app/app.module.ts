@@ -15,6 +15,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {StoreModule} from '@ngrx/store';
 import {ActionReducer} from './redux/store';
+import {NgHttpLoaderModule} from 'ng-http-loader';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import {ActionReducer} from './redux/store';
     AdminModule,
     ReactiveFormsModule,
     StoreModule.forRoot({ActionReducer}),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    NgHttpLoaderModule.forRoot()
   ],
   providers: [Guard],
   bootstrap: [AppComponent]

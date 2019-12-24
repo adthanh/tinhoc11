@@ -1,35 +1,35 @@
 <div class="exercises-box">
   <div class="container-fluid">
     <div class="row" style="position: relative;">
-      <div class="col-12 col-md-2 p-0 customTranform hiden show " id="hidden-main-left"
-        style="position: absolute; left:0; z-index: 9999;">
-        <div class="exercises-text">
-          <div class="card">
-            <div class="card-header" style="background: #15141f;color: #fff;">
-              <div style="display: flex;justify-content: space-between;align-items: center;">
-                <div>
-                  Menu
+        <div class="col-12 col-md-2 p-0 customTranform hiden show " id="hidden-main-left"
+             style="position: absolute; left:0; z-index: 9999;">
+            <div class="exercises-text">
+                <div class="card">
+                    <div class="card-header" style="background: #15141f;color: #fff;">
+                        <div style="display: flex;justify-content: space-between;align-items: center;">
+                            <div>
+                                Menu
+                            </div>
+                            <i (click)="hiddenMainLeft();" class="fa fa-bars" aria-hidden="true" style="color:#fff;font-size: 23px;"></i>
+                        </div>
+                    </div>
+                    <div class="scroll" id="style-4">
+                        <div class="card-body" style="padding: 0;">
+                            <div class="list-group">
+                                <a class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
+                                <a class="list-group-item list-group-item-action">Morbi leo risus</a>
+                                <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                                <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            </div>
+                            <div class="card-body">
+                                <p class="card-text"></p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <i (click)="hiddenMainLeft();" class="fa fa-bars" aria-hidden="true" style="color:#fff;font-size: 23px;"></i>
-              </div>
             </div>
-            <div class="scroll" id="style-4">
-              <div class="card-body" style="padding: 0;">
-                <div class="list-group">
-                  <a class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                  <a class="list-group-item list-group-item-action">Morbi leo risus</a>
-                  <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                  <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                </div>
-                <div class="card-body">
-                  <p class="card-text"></p>
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
-      <div *ngIf="isCode" class="col-12 col-md-4 p-0 customTranform">
+      <div class="col-12 col-md-4 p-0">
         <div class="exercises-text">
           <div class="card">
             <div class="card-header">
@@ -42,14 +42,10 @@
             </div>
             <div class="scroll" id="style-4">
               <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">Tên Sylabuss</h6>
-                <h5 class="card-title">Tên Bài học</h5>
-                <p class="card-text">Nội dung bài học</p>
-                <div class="card-header" style="border: unset;">
-                  Hướng dẫn
-                </div>
+                <h6 class="card-subtitle mb-2 text-muted">{{project.name_syllabus}}</h6>
+                <h5 class="card-title">{{project.name}}</h5>
                 <div class="card-body">
-                  <p class="card-text"></p>
+                  <p class="card-text" [innerHTML]="project.description"></p>
                 </div>
               </div>
             </div>
@@ -84,7 +80,7 @@
               <div class="card-body" style="background: #000; height:100%; color: white; white-space: pre-line;">
                 <div *ngIf="error" style="color: red">{{error}}</div>
                 <div>{{output}}</div>
-                <div *ngIf="isDone" style="color: green">code complete</div>
+                <div *ngIf="isError" style="color: green">Bạn đã code đúng rồi nhá :D Hãy qua bài mới nào</div>
               </div>
             </div>
           </div>
@@ -101,14 +97,16 @@
                 <h6 class="card-subtitle mb-2 text-muted">Danh sách câu hỏi</h6>
                 <div style="padding: 20px;" *ngFor="let item of proExercises ; let i = index">
                   <h5 class="card-title">Câu {{i + 1}} : <small>{{item.title}}</small></h5>
-                  <div class="form-check" *ngFor="let items of item.answers | keyvalue ; let s = index">
-                    <input class="form-check-input" type="radio" [attr.name]="'exampleRadios'+ i" [value]="items.s"
-                      (change)="onSelectionChange(item, items.key)">
-                    <label class="form-check-label" for='exampleRadios1'>
+                  <div class="form-check"
+                       *ngFor="let items of item.answers | keyvalue ; let s = index">
+                    <input class="form-check-input" type="radio" [attr.name]="'exampleRadios'+ i"
+                           [value]="items.s" (change)="onSelectionChange(item, items.key)">
+                    <label style="margin-left: 10px" class="form-check-label" for='exampleRadios1'>
                       <p>{{items.value}}</p>
                     </label>
                   </div>
                 </div>
+                <p *ngIf="correct">{{correct}}</p>
                 <button type="button" class="btn btn-secondary" (click)="onsubmit()">Kiểm tra</button>
               </div>
             </div>

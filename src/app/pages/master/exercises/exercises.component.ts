@@ -1,13 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import './editorcode';
-import { CodeValueRequest } from '../../../requests/code-value-request';
-import { CodeValueService } from '../../../services/code-value.service';
+import {CodeValueRequest} from '../../../requests/code-value-request';
+import {CodeValueService} from '../../../services/code-value.service';
 import base64 from 'base-64';
 import utf8 from 'utf8';
-import { FormControl } from '@angular/forms';
-import { Project } from 'src/app/response/project-dto';
-import { ProjectService } from 'src/app/services/project.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import {FormControl} from '@angular/forms';
+import {Project} from 'src/app/response/project-dto';
+import {ProjectService} from 'src/app/services/project.service';
+import {ActivatedRoute, Router} from '@angular/router';
 
 @Component({
   selector: 'app-exercises',
@@ -16,32 +16,39 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 
 export class ExercisesComponent implements OnInit {
-  error = '';
-  output = '';
-  check = ['Hello World!'];
-  isDone = false;
 
   constructor(
     private projectService: ProjectService,
     private route: ActivatedRoute,
     private router: Router,
-    private codeValueService: CodeValueService
-  ) { }
+    private codeValueService: CodeValueService,
+  ) {
+    this.id = this.route.snapshot.params.id;
+  }
 
-  projects: Project[];
-  isCorrect: FormControl = new FormControl;
-  checked: number = 0;
+  project: any = {};
+
+  error = '';
+  output = '';
+  check = ['Hello World!'];
+  isError = undefined;
+  correct: string = undefined;
+  checked = 0;
   id = '';
   isCode = true;
+  selectedEntry: any;
+  questionCorrect: any;
+
+  proExercises = [];
+
   ngOnInit() {
     this.output = '';
     this.loadProject();
-    this.id = this.route.snapshot.params['id'];
   }
 
   getCodeValue() {
     this.output = '';
-    this.isDone = false;
+    this.isError = '';
     const request = new CodeValueRequest();
     // @ts-ignore
     request.code = this.encodeBase64(window.getCodeValue());
@@ -52,7 +59,9 @@ export class ExercisesComponent implements OnInit {
           window.customConsoleLog = (x) => {
             this.output += x + '\n';
             if (this.check.includes(x)) {
-              this.isDone = true;
+              this.isError = 'Bạn đã code đúng rồi nhá :D Hãy qua bài mới nào';
+            }else{
+              this.isError = 'Bạn đã code gần đúng rồi. Hãy cố gắng thêm chút nữa.';
             }
           };
           eval.call(this, atob(result.message));
@@ -76,60 +85,50 @@ export class ExercisesComponent implements OnInit {
     const bytes = utf8.encode(text);
     return base64.encode(bytes);
   }
-  selectedEntry: any;
+
   onSelectionChange(question: any, currentAns: any) {
     // this.selectedEntry = items.key;
-    if (question.correct == currentAns)
+    if (question.correct == currentAns) {
       this.checked++;
-    else this.checked--;
-    if (this.checked < 0) this.checked = 0;
+    } else {
+      this.checked--;
+    }
+    if (this.checked < 0) {
+      this.checked = 0;
+    }
   }
 
-
-  proExercises = [
-    {
-      "title": "day la cau hoi so 1",
-      "answers": {
-        "1": "day la cau tra loi 1",
-        "2": "day la cau tra loi 2",
-        "3": "day la cau tra loi 3",
-        "4": "day la cau tra loi 4"
-      },
-      "correct": 1
-    },
-    {
-      "title": "day la cau hoi so 2",
-      "answers": {
-        "1": "day la cau tra loi 3",
-        "2": "day la cau tra loi 4",
-        "3": "day la cau tra loi 5",
-        "4": "day la cau tra loi 6"
-      },
-      "correct": 2
-    }
-  ]
-
   loadProject() {
-    return this.projectService.getAllProject().subscribe(
+    return this.projectService.findById(this.id).subscribe(
       result => {
         if (result) {
-          this.projects = result;
+          this.project = result;
+          this.isCode = this.project.type !== 1;
+          if (this.project.type === 1) {
+            this.proExercises = JSON.parse(this.project.json_data);
+          } else {
+            this.check = JSON.parse(this.project.json_data);
+          }
         } else {
-          this.projects = [];
+          this.project = [];
         }
       }
     );
   }
 
   onsubmit() {
-    if (this.checked === this.proExercises.length) console.log("All true");
+    if (this.checked === this.proExercises.length) {
+      this.correct = 'Bạn trả lời đúng rồi đó - Hãy qua bài khác làm nhé 😙';
+    } else {
+      this.correct = 'Bạn trả lời sai rồi vui lòng thử lại nhé 😑';
+    }
   }
-
+  
   hiddenMainLeft() {
     var hidden = document.getElementById('hidden-main-left');
-    if (hidden.style.display === 'block') 
-    { 
-      hidden.style.display = 'none'; 
+    if (hidden.style.display === 'block')
+    {
+      hidden.style.display = 'none';
       hidden.style.transition= '1s';
     }
     else {
