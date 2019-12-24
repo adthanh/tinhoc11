@@ -13,6 +13,7 @@ import { GroupSyllabusComponent } from './pages/admin/group-syllabus/group-sylla
 import { SignUpComponent } from './pages/master/sign-up/sign-up.component';
 import { ProjectMnComponent } from './pages/admin/project-mn/project-mn.component';
 import { UserComponent } from './pages/admin/user/user.component';
+import { ProfileUserComponent } from './pages/master/profile-user/profile-user.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -30,6 +31,7 @@ const APP_ROUTES: Routes = [
       { path: 'login', component: LoginComponent },
       { path: 'exercises/:id', component: ExercisesComponent },
       { path: 'signup', component: SignUpComponent },
+      { path: 'profile', component: ProfileUserComponent },
     ]
   },
   {

@@ -80,7 +80,8 @@
                   <td>{{project.name}}</td>
                   <td>{{project.syllabus_name}}</td>
                   <td>{{project.description}}</td>
-                  <td>{{project.type}}</td>
+                  <td *ngIf="project.type == 1">Trắc nghiệm</td>
+                  <td *ngIf="project.type == 2">Thực hành</td>
                   <td>{{project.json_data}}</td>
                   <td style="display: flex;justify-content: space-evenly;align-items: center;">
                     <button type="button" class="btn btn-outline-success" data-toggle="modal"

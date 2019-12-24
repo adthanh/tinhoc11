@@ -26,7 +26,7 @@ export class UserService {
         ),
       );
   }
-  
+
   // createUser(request: UserRequest) {
   //   return this.http.post<User[]>(environment.API_ENDPOINT + '/users/create/', request).pipe(
   //     map(
@@ -40,7 +40,7 @@ export class UserService {
   //   );
   // }
 
-  createUser(request : SignUpRequest) {
+  createUser(request: SignUpRequest) {
     return this.http.post(environment.API_ENDPOINT + '/register', request)
       .pipe(
         map(
@@ -56,7 +56,7 @@ export class UserService {
       );
   }
 
-  searchUser(name : any){
+  searchUser(name: any) {
     return this.http.get<User[]>(environment.API_ENDPOINT + '/users/findbyname?name=' + name)
       .pipe(
         map(
@@ -70,8 +70,8 @@ export class UserService {
       );
   }
 
-  deleteUser(id: any){
-    return this.http.delete<User[]>(environment.API_ENDPOINT + '/users/delete?id='+ id)
+  deleteUser(id: any) {
+    return this.http.delete<User[]>(environment.API_ENDPOINT + '/users/delete?id=' + id)
       .pipe(
         map(
           result => {
@@ -84,7 +84,7 @@ export class UserService {
       );
   }
 
-  updateUser(request: UserRequest){
+  updateUser(request: UserRequest) {
     return this.http.post(environment.API_ENDPOINT + '/users/edit/', request)
       .pipe(
         map(
@@ -97,4 +97,35 @@ export class UserService {
         ),
       );
   }
+  updateProfile(request: UserRequest) {
+    let accessToken = window.sessionStorage.getItem('userToken');
+    let headers = { "Authorization": "Bearer " + accessToken };
+    return this.http.post(environment.API_ENDPOINT + '/users/updateProfile', request, { headers: headers })
+      .pipe(
+        map(
+          result => {
+            return result;
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        ),
+      );
+  }
+
+  getProfile() {
+    let accessToken = window.sessionStorage.getItem('userToken');
+    let headers = { "Authorization": "Bearer " + accessToken };
+    return this.http.get(environment.API_ENDPOINT + '/user', { headers: headers }).pipe(
+      map(
+        result => {
+          return result;
+        },
+        (error: any) => {
+          console.log(error);
+        }
+      ),
+    );
+  }
+
 }

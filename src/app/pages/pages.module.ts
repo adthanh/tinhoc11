@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { ProjectMnComponent } from './admin/project-mn/project-mn.component';
 import { UserComponent } from './admin/user/user.component';
 import { FooterExerComponent } from './master/footer-exer/footer-exer.component';
+import { ProfileUserComponent } from './master/profile-user/profile-user.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { FooterExerComponent } from './master/footer-exer/footer-exer.component'
     SignUpComponent,
     ProjectMnComponent,
     UserComponent,
-    FooterExerComponent
+    FooterExerComponent,
+    ProfileUserComponent
   ],
 
   exports: [
