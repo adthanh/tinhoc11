@@ -124,7 +124,7 @@
           <div class="home-body-syllabus">
             <!-- Collapsible content -->
             <div class="border-box">
-              <div class="row" *ngFor="let item of syllabuss let i = index trackBy: trackById">
+              <div class="row" *ngFor="let item of syllabuss ; let i = index trackBy: trackById">
                 <div class="col-12">
                   <div class="card border-unset">
                     <div class="card-header">
@@ -138,7 +138,7 @@
                     </div>
                     <div class="collapse multi-collapse" [attr.id]="'multiCollapseExample' + i">
                       <div class=" card-body border-bottom">
-                        <ul class="item-list-exercise" *ngFor="let pro of projects let i = index trackBy: trackById">
+                        <ul class="item-list-exercise" *ngFor="let pro of item ; let i = index trackBy: trackById">
                           <li>
                             <a href="#">
                               <div class="itm-exercise-left">
@@ -151,7 +151,7 @@
                                   </div>
                                 </div>
                                 <div class="itm-exercise-text">
-                                  <span>{{pro.name}}</span>
+                                  <span>{{pro.syllabus.name_syllabus}}</span>
                                 </div>
                               </div>
                               <div class="itm-exercise-right">

@@ -82,6 +82,20 @@ export class SyllabusService {
       );
   }
 
+  getlistsyllabusbygroup(){
+    return this.http.get<Syllabus[]>(environment.API_ENDPOINT + '/syllabus/getlistsyllabusbygroup')
+      .pipe(
+        map(
+          result => {
+            return result;
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        ),
+      );
+  }
+
     // createSyllabus(name: string, subName: string) {
   //   let customHeaders = new HttpHeaders();
   //   const payload = new HttpParams()
