@@ -23,11 +23,11 @@ export class HomeComponent implements OnInit {
     private projectService: ProjectService,
     private router: Router,
   ) { }
-  
+
   ngOnInit() {
     this.loadSyllabusByGroup();
   }
-  
+
   loadSyllabusByGroup() {
     return this.syllabusService.getlistsyllabusbygroup().subscribe(
       result => {

@@ -60,7 +60,7 @@ export class ExercisesComponent implements OnInit {
             this.output += x + '\n';
             if (this.check.includes(x)) {
               this.isError = 'Bạn đã code đúng rồi nhá :D Hãy qua bài mới nào';
-            }else{
+            } else {
               this.isError = 'Bạn đã code gần đúng rồi. Hãy cố gắng thêm chút nữa.';
             }
           };
@@ -109,6 +109,7 @@ export class ExercisesComponent implements OnInit {
           } else {
             this.check = JSON.parse(this.project.json_data);
           }
+          this.getListSyllabus();
         } else {
           this.project = [];
         }
@@ -123,18 +124,30 @@ export class ExercisesComponent implements OnInit {
       this.correct = 'Bạn trả lời sai rồi vui lòng thử lại nhé 😑';
     }
   }
-  
+
   hiddenMainLeft() {
     var hidden = document.getElementById('hidden-main-left');
-    if (hidden.style.display === 'block')
-    {
+    if (hidden.style.display === 'block') {
       hidden.style.display = 'none';
-      hidden.style.transition= '1s';
-    }
-    else {
+      hidden.style.transition = '1s';
+    } else {
       hidden.style.display = 'block';
-      hidden.style.transition= '1s';
+      hidden.style.transition = '1s';
     }
+  }
+
+  syllabus: any = undefined;
+
+  getListSyllabus() {
+    return this.projectService.findByIdSyllabus(this.project.id_syllabus).subscribe(
+      result => {
+        if (result) {
+          this.syllabus = result;
+        } else {
+          this.project = [];
+        }
+      }
+    );
   }
 
 }

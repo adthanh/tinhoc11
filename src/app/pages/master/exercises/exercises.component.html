@@ -8,18 +8,15 @@
                     <div class="card-header" style="background: #15141f;color: #fff;">
                         <div style="display: flex;justify-content: space-between;align-items: center;">
                             <div>
-                                Menu
+                              {{project.name_syllabus}}
                             </div>
-                            <i (click)="hiddenMainLeft();" class="fa fa-bars" aria-hidden="true" style="color:#fff;font-size: 23px;"></i>
+                            <i (click)="hiddenMainLeft();" class="fa fa-times" aria-hidden="true" style="color:#fff;font-size: 23px;"></i>
                         </div>
                     </div>
-                    <div class="scroll" id="style-4">
+                    <div class="scroll" id="style-4-9">
                         <div class="card-body" style="padding: 0;">
-                            <div class="list-group">
-                                <a class="list-group-item list-group-item-action">Dapibus ac facilisis in</a>
-                                <a class="list-group-item list-group-item-action">Morbi leo risus</a>
-                                <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
-                                <a class="list-group-item list-group-item-action">Porta ac consectetur ac</a>
+                            <div class="list-group" *ngFor="let item of syllabus ; let i = index">
+                                <a class="list-group-item list-group-item-action" href="/exercises/{{item.id}}">{{item.name}}</a>
                             </div>
                             <div class="card-body">
                                 <p class="card-text"></p>
@@ -42,7 +39,6 @@
             </div>
             <div class="scroll" id="style-4">
               <div class="card-body">
-                <h6 class="card-subtitle mb-2 text-muted">{{project.name_syllabus}}</h6>
                 <h5 class="card-title">{{project.name}}</h5>
                 <div class="card-body">
                   <p class="card-text" [innerHTML]="project.description"></p>
