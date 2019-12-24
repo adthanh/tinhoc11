@@ -1,10 +1,11 @@
-import {ProjectRequest} from './../../../requests/project-request';
+import {ProjectRequest} from '../../../requests/project-request';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {ProjectService} from './../../../services/project.service';
 import {Component, OnInit} from '@angular/core';
 import {Syllabus} from 'src/app/response/syllabus-dto';
 import {SyllabusService} from 'src/app/services/syllabus.service';
 import {Project} from 'src/app/response/project-dto';
+import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
   selector: 'app-project-mn',
@@ -12,7 +13,7 @@ import {Project} from 'src/app/response/project-dto';
   styleUrls: ['./project-mn.component.css']
 })
 export class ProjectMnComponent implements OnInit {
-
+  public Editor = ClassicEditor;
 
   syllabuss: Syllabus[];
   projects: Project[];

@@ -1,7 +1,10 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { Router, ActivatedRoute } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import {Component, OnInit, HostBinding} from '@angular/core';
+import {faSearch} from '@fortawesome/free-solid-svg-icons';
+import {Router, ActivatedRoute} from '@angular/router';
+import {LoginService} from 'src/app/services/login.service';
+import {IAppState} from '../../../redux/store';
+import {LOGIN, LOGOUT} from '../../../redux/action';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-header',
@@ -10,31 +13,29 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class HeaderComponent implements OnInit {
   [x: string]: any;
+
   faSearch = faSearch;
+  isLogin = false;
 
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private loginService: LoginService
-  ) {}
+    private loginService: LoginService) {
+  }
 
-  isLogin: boolean = true;
 
   ngOnInit() {
     if (window.sessionStorage.getItem('userToken') != null) {
       this.isLogin = true;
-    }
-    else {
+    } else {
       this.isLogin = false;
     }
-
-    // this.isLogin = this.route.snapshot.params['isLogin'];
 
   }
 
   logout() {
     this.loginService.logout();
-    this.isLogin = false;
+    this.isLogin  = false;
     this.router.navigate(['/login']);
   }
 

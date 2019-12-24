@@ -55,7 +55,8 @@ export class LoginComponent implements OnInit {
     this.loginService.UserAuthentication(request, this.error).subscribe(
       (data: any) => {
         window.sessionStorage.setItem('userToken', data.access_token);
-        this.router.navigate(['']);
+        window.location.replace('');
+        // this.router.navigate(['']);
       },
       (response: any) => {
         this.error = "Đăng nhập không thành công";

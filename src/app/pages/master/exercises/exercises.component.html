@@ -87,17 +87,17 @@
             </div>
             <div class="col-12 col-md-4 p-0">
                 <div class="exercises-code" id="style-4">
-                    <div class="card border-custom" sty>
+                    <div class="card border-custom">
                         <div class="card-header">
-                            Index.js
+                            Khu vực code
                         </div>
                         <div class="scroll scroll-custom" id="style-4">
                             <div class="form-group">
-                                <textarea class="form-control" name="" id=""></textarea>
+                                <textarea class="form-control" name="" id="code-editor" ></textarea>
                             </div>
                         </div>
                         <div class="card-footer">
-                            <button type="button" class="btn btn-primary">Run</button>
+                            <button type="button" class="btn btn-primary" (click)="getCodeValue()">Run</button>
                         </div>
                     </div>
                 </div>
@@ -105,58 +105,14 @@
             <div class="col-12 col-md-4 p-0">
                 <div class="exercises-show-code" id="style-4">
                     <div class="card border-custom">
-                        <div class="card-header">
-                            Code
+                        <div class="card-header" style="background: #15141f; color: white">
+                            Đầu ra
                         </div>
-                        <div class="scroll" id="style-4">
-                            <div class="card-body">
-                                <h6 class="card-subtitle mb-2 text-muted">Giới thiệu</h6>
-                                <h5 class="card-title">Tin học lớp 11</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.</p>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.Some quick example text to build on the card title and make up
-                                    the
-                                    bulk
-                                    of the card's content.</p>
+                        <div class="scroll" id="style-4-2">
+                            <div class="card-body" style="background: #000; height:100%; color: white; white-space: pre-line;">
+                                <div *ngIf="error" style="color: red">{{error}}</div>
+                                <div>{{output}}</div>
+                              <div *ngIf="isDone" style="color: green">code complete</div>
                             </div>
                         </div>
                     </div>
