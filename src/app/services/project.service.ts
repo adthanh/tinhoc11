@@ -98,4 +98,17 @@ export class ProjectService {
       );
   }
 
+  getCout(){
+    return this.http.get(environment.API_ENDPOINT + '/home/getcount')
+      .pipe(
+        map(
+          result => {
+            return result;
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        ),
+      );
+  }
 }
