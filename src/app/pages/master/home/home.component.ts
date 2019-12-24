@@ -25,30 +25,17 @@ export class HomeComponent implements OnInit {
   ) { }
   
   ngOnInit() {
-    this.loadsyllabus();
-    this.loadProject();
+    this.loadSyllabusByGroup();
   }
-
-  loadsyllabus() {
-    this.syllabusService.getAllSyllabus().subscribe(
+  
+  loadSyllabusByGroup() {
+    return this.syllabusService.getlistsyllabusbygroup().subscribe(
       result => {
         if (result) {
           this.syllabuss = result;
-        } else {
-          this.syllabuss = [];
-        }
-      }
-    );
-  }
-
-  loadProject() {
-    return this.projectService.getAllProject().subscribe(
-      result => {
-        if (result) {
-          this.projects = result;
           // this.router.navigateByUrl('exercises/',this.project.id);
         } else {
-          this.projects = [];
+          this.syllabuss = [];
         }
       }
     );
