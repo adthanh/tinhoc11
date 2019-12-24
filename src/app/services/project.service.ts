@@ -98,6 +98,19 @@ export class ProjectService {
       );
   }
 
+  getCout(){
+    return this.http.get(environment.API_ENDPOINT + '/home/getcount')
+      .pipe(
+        map(
+          result => {
+            return result;
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        ),
+      );
+  }
   findByIdSyllabus(id: string) {
     return this.http.get<Project[]>(environment.API_ENDPOINT + '/project/findbyidsyllabus?id=' + id)
       .pipe(
