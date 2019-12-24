@@ -28,7 +28,7 @@ const APP_ROUTES: Routes = [
         path: '', component: HomeComponent
       },
       { path: 'login', component: LoginComponent },
-      { path: 'exercises', component: ExercisesComponent },
+      { path: 'exercises/:id', component: ExercisesComponent },
       { path: 'signup', component: SignUpComponent },
     ]
   },

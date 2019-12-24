@@ -21,6 +21,7 @@ export class HomeComponent implements OnInit {
   constructor(
     private syllabusService: SyllabusService,
     private projectService: ProjectService,
+    private router: Router,
   ) { }
   
   ngOnInit() {
@@ -45,6 +46,7 @@ export class HomeComponent implements OnInit {
       result => {
         if (result) {
           this.projects = result;
+          // this.router.navigateByUrl('exercises/',this.project.id);
         } else {
           this.projects = [];
         }

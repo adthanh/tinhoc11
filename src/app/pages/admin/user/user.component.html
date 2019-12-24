@@ -1,199 +1,206 @@
 <!-- Content Wrapper. Contains page content -->
 <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1>Quản lý thành viên</h1>
-          </div>
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
-              <li class="breadcrumb-item active">Quản lý thành viên</li>
-            </ol>
-          </div>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <h1>Quản lý thành viên</h1>
         </div>
-      </div><!-- /.container-fluid -->
-    </section>
-  
-    <!-- Main content -->
-    <section class="content">
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <div class="row main-content-header">
-                <div class="col-4">
-                  <h3 class="card-title">Thành viên</h3>
-                </div>
-                <div class="col-8 main-content-header-right">
-                  <span>
-                    <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Tìm kiếm theo tên"
-                      [formControl]="userSearch" aria-label="Recipient's username" aria-describedby="basic-addon2">
-                      <div class="input-group-append">
-                        <button (click)="searchUser()" class="btn btn-outline-secondary" type="button">Tìm
-                          kiếm </button>
-                      </div>
+        <div class="col-sm-6">
+          <ol class="breadcrumb float-sm-right">
+            <li class="breadcrumb-item"><a href="#">Trang chủ</a></li>
+            <li class="breadcrumb-item active">Quản lý thành viên</li>
+          </ol>
+        </div>
+      </div>
+    </div><!-- /.container-fluid -->
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <div class="row main-content-header">
+              <div class="col-4">
+                <h3 class="card-title">Thành viên</h3>
+              </div>
+              <div class="col-8 main-content-header-right">
+                <span>
+                  <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Tìm kiếm theo tên" [formControl]="userSearch"
+                      aria-label="Recipient's username" aria-describedby="basic-addon2">
+                    <div class="input-group-append">
+                      <button (click)="searchUser()" class="btn btn-outline-secondary" type="button">Tìm
+                        kiếm </button>
                     </div>
-                  </span>
-                  <span>
-                    <!-- Button trigger modal -->
-                    <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal"
-                      data-target="#exampleModal" (click)="openCreateModal()">
-                      +Thêm
-                    </button>
-                  </span>
-                </div>
+                  </div>
+                </span>
+                <span>
+                  <!-- Button trigger modal -->
+                  <button type="button" class="btn btn-outline-info btn-add" data-toggle="modal"
+                    data-target="#exampleModal" (click)="openCreateModal()">
+                    +Thêm
+                  </button>
+                </span>
               </div>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body"  style="overflow: auto;height: calc(100vh - 234px);">
-              <table id="example2" class="table table-bordered table-hover custom-table">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>Tên thành viên</th>
-                    <th>Email</th>
-                    <th>Quyền</th>
-                    <th>Hành động</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr *ngFor="let user of users">
-                    <td>{{user.id}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.level}}</td>
-                    <td style="display: flex;justify-content: space-evenly;align-items: center;">
-                      <button type="button" class="btn btn-outline-success" (click)="selectUser(user)" data-toggle="modal"
+          </div>
+          <!-- /.card-header -->
+          <div class="card-body" style="overflow: auto;height: calc(100vh - 234px);">
+            <table id="example2" class="table table-bordered table-hover custom-table">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Tên thành viên</th>
+                  <th>Email</th>
+                  <th>Quyền</th>
+                  <th>Hành động</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let user of users">
+                  <td>{{user.id}}</td>
+                  <td>{{user.name}}</td>
+                  <td>{{user.email}}</td>
+                  <!-- <td>{{user.level}}</td> -->
+                  <td *ngIf="user.level == 0">User</td>
+                  <td *ngIf="user.level == 1">Admin</td>
+                  <td style="display: flex;justify-content: space-evenly;align-items: center;">
+                    <button type="button" class="btn btn-outline-success" (click)="selectUser(user)" data-toggle="modal"
                       data-target="#exampleModal-1">Sửa</button>
-                      <button type="button" class="btn btn-outline-danger" data-toggle="modal"
-                      data-target="#exampleModal-2" (click)="selectUser(user)" >Xóa</button>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.card-body -->
+                    <button type="button" class="btn btn-outline-danger" data-toggle="modal"
+                      data-target="#exampleModal-2" (click)="selectUser(user)">Xóa</button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-          <!-- /.card -->
+          <!-- /.card-body -->
         </div>
-        <!-- /.col -->
+        <!-- /.card -->
       </div>
-      <!-- /.row -->
-    </section>
-    <!-- /.content -->
+      <!-- /.col -->
+    </div>
+    <!-- /.row -->
+  </section>
+  <!-- /.content -->
+</div>
+
+<!-- Modal -->
+<form [formGroup]="userGroup">
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Thêm thành viên</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Tên thành viên</label>
+            <input type="text" name="uName-1" id="uName-1" class="form-control" placeholder="Nhập tên thành viên"
+              aria-describedby="helpId" formControlName="uName">
+          </div>
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" name="uEmail-1" id="uEmail-1" class="form-control" placeholder="Nhập email"
+              aria-describedby="helpId" formControlName="uEmail">
+          </div>
+          <div class="form-group">
+            <label for="">Mật khẩu</label>
+            <input type="password" name="uPassword-1" id="uPassword-1" class="form-control" placeholder="Nhập mật khẩu"
+              aria-describedby="helpId" formControlName="uPassword">
+          </div>
+          <div class="form-group">
+            <label for="">Nhập lại mật khẩu</label>
+            <input type="password" name="uCfPassword-1" id="uCfPassword-1" class="form-control"
+              placeholder="Nhập lại mật khẩu" aria-describedby="helpId" formControlName="uCfPassword">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="createUser()">Thêm</button>
+        </div>
+      </div>
+    </div>
   </div>
-  
-  <!-- Modal -->
-  <form [formGroup]="userGroup">
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Thêm thành viên</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="">Tên thành viên</label>
-              <input type="text" name="uName-1" id="uName-1" class="form-control" placeholder="Nhập tên thành viên"
-                aria-describedby="helpId" formControlName="uName">
-            </div>
-            <div class="form-group">
-              <label for="">Email</label>
-              <input type="email" name="uEmail-1" id="uEmail-1" class="form-control" placeholder="Nhập email"
-                aria-describedby="helpId" formControlName="uEmail">
-            </div>
-            <div class="form-group">
-              <label for="">Mật khẩu</label>
-              <input type="email" name="uPassword-1" id="uPassword-1" class="form-control" placeholder="Nhập mật khẩu"
-                aria-describedby="helpId" formControlName="uPassword">
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-primary"  data-dismiss="modal" (click)="createUser()">Thêm</button>
-          </div>
+</form>
+
+<!-- Modal -->
+<form [formGroup]="userGroup">
+  <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-1"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel-1">Sửa thanh viên</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
         </div>
-      </div>
-    </div>
-  </form>
-  
-  <!-- Modal -->
-  <form [formGroup]="userGroup">
-    <div class="modal fade" id="exampleModal-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-1"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel-1">Sửa thanh viên</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Tên thành viên</label>
+            <input type="text" name="uName" id="uName" class="form-control" placeholder="Nhập tên thành viên"
+              aria-describedby="helpId" formControlName="uName">
           </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="">Tên thành viên</label>
-              <input type="text" name="uName" id="uName" class="form-control" placeholder="Nhập tên thành viên"
-                aria-describedby="helpId" formControlName="uName">
-            </div>
-            <div class="form-group">
-              <label for="">Email</label>
-              <input type="email" name="uEmail" id="uEmail" class="form-control" placeholder="Nhập email"
-                aria-describedby="helpId" formControlName="uEmail">
-            </div>
-            <div class="form-group">
-              <label for="">Mật khẩu</label>
-              <input type="email" name="uPassword" id="uPassword" class="form-control" placeholder="Nhập mật khẩu"
-                aria-describedby="helpId" formControlName="uPassword">
-            </div>
-            <div class="form-group">
-              <label for="">Quyền</label>
-              <!-- <input type="text" name="pType" id="pType" class="form-control" placeholder="Loại bài học" aria-describedby="helpId"
+          <div class="form-group">
+            <label for="">Email</label>
+            <input type="email" name="uEmail" id="uEmail" class="form-control" placeholder="Nhập email"
+              aria-describedby="helpId" formControlName="uEmail">
+          </div>
+          <div class="form-group">
+            <label for="">Mật khẩu</label>
+            <input type="password" name="uPassword" id="uPassword" class="form-control" placeholder="Nhập mật khẩu"
+              aria-describedby="helpId" formControlName="uPassword">
+          </div>
+          <div class="form-group">
+            <label for="">Quyền</label>
+            <!-- <input type="text" name="pType" id="pType" class="form-control" placeholder="Loại bài học" aria-describedby="helpId"
                 formControlName="pType"> -->
-              <select class="custom-select" formControlName="uLevel" placeholder="Lựa chọn">
-                <option [ngValue]="0">0</option>
-                <option [ngValue]="1">1</option>
-              </select>
-            </div>
+            <select class="custom-select" formControlName="uLevel" placeholder="Lựa chọn">
+              <option [ngValue]="0">User</option>
+              <option [ngValue]="1">Admin</option>
+            </select>
           </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">Sửa</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="updateUser()">Sửa</button>
         </div>
       </div>
     </div>
-  </form>
-  
-  <!-- Modal -->
-  <form [formGroup]="userGroup">
-    <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
-      aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel-2">Xóa Thành viên</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+  </div>
+</form>
+
+<!-- Modal -->
+<form [formGroup]="userGroup">
+  <div class="modal fade" id="exampleModal-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel-2"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel-2">Xóa Thành viên</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="">Bạn có muốn xóa thành viên '' không </label>
           </div>
-          <div class="modal-body">
-            <div class="form-group">
-              <label for="">Bạn có muốn xóa thành viên '{{selectedUser.name}}' không </label>
-            </div>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteUser()">Xóa</button>
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Hủy</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" (click)="deleteUser()">Xóa</button>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>

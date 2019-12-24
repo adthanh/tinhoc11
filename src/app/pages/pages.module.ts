@@ -13,6 +13,7 @@ import { SignUpComponent } from './master/sign-up/sign-up.component';
 import { RouterModule } from '@angular/router';
 import { ProjectMnComponent } from './admin/project-mn/project-mn.component';
 import { UserComponent } from './admin/user/user.component';
+import { FooterExerComponent } from './master/footer-exer/footer-exer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { UserComponent } from './admin/user/user.component';
     GroupSyllabusComponent,
     SignUpComponent,
     ProjectMnComponent,
-    UserComponent
+    UserComponent,
+    FooterExerComponent
   ],
 
   exports: [

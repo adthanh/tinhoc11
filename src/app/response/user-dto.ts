@@ -4,4 +4,5 @@ export class User {
     email: string;
     level: number;
     password:string;
+    c_password: string
 }

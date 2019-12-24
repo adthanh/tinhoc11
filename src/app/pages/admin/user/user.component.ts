@@ -3,6 +3,7 @@ import { User } from 'src/app/response/user-dto';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { UserRequest } from 'src/app/requests/user-request';
+import { SignUpRequest } from 'src/app/requests/sign-up-request';
 
 @Component({
   selector: 'app-user',
@@ -13,7 +14,7 @@ export class UserComponent implements OnInit {
 
   users: User[];
   user: User;
-  selectedUser : User;
+  selectedUser: User;
   userControl: FormControl = new FormControl();
   userSearch: FormControl = new FormControl();
   userGroup: FormGroup;
@@ -32,6 +33,7 @@ export class UserComponent implements OnInit {
       uEmail: new FormControl(''),
       uLevel: new FormControl(''),
       uPassword: new FormControl(''),
+      uCfPassword: new FormControl(''),
     });
   }
   selectUser(user: User) {
@@ -43,6 +45,7 @@ export class UserComponent implements OnInit {
     this.userGroup.get('id').setValue(this.selectedUser.id);
     this.userGroup.get('uEmail').setValue(this.selectedUser.email);
     this.userGroup.get('uPassword').setValue(this.selectedUser.password);
+    this.userGroup.get('uCfPassword').setValue(this.selectedUser.c_password);
     this.userGroup.get('uLevel').setValue(this.selectedUser.level);
   }
 
@@ -94,13 +97,13 @@ export class UserComponent implements OnInit {
     )
   }
 
-  createUser(){
+  createUser() {
     const self = this.userGroup.value;
-    const request = new UserRequest();
-    request.id = self.id;
+    const request = new SignUpRequest();
     request.name = self.uName;
     request.email = self.uEmail;
     request.password = self.uPassword;
+    request.c_password = self.uCfPassword;
     this.userService.createUser(request).subscribe(
       _result => {
         this.loadUsers();
@@ -113,11 +116,11 @@ export class UserComponent implements OnInit {
     );
   }
 
-  openCreateModal(){
+  openCreateModal() {
     this.initForm();
   }
 
-  deleteUser(){
+  deleteUser() {
     this.userService.deleteUser(this.selectedUser.id).subscribe(
       result => {
         this.initForm();
@@ -130,6 +133,6 @@ export class UserComponent implements OnInit {
     );
   }
 
- 
+
 
 }
