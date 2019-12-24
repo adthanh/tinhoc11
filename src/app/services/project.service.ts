@@ -111,4 +111,18 @@ export class ProjectService {
         ),
       );
   }
+  findByIdSyllabus(id: string) {
+    return this.http.get<Project[]>(environment.API_ENDPOINT + '/project/findbyidsyllabus?id=' + id)
+      .pipe(
+        map(
+          result => {
+            return result;
+          },
+          (error: any) => {
+            console.log(error);
+          }
+        ),
+      );
+  }
+
 }
