@@ -32,6 +32,7 @@ export class ExercisesComponent implements OnInit {
   isCorrect: FormControl = new FormControl;
   checked: number = 0;
   id = '';
+  isCode = false;
   ngOnInit() {
     this.output = '';
     this.loadProject();

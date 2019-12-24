@@ -1,79 +1,106 @@
 <div class="exercises-box">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-12 col-md-4 p-0">
-                <div class="exercises-text">
-                    <div class="card">
-                        <div class="card-header">
-                            Bài học
-                        </div>
-                        <div class="scroll" id="style-4">
-                            <div class="card-body">
-                                <h6 class="card-subtitle mb-2 text-muted">Tên Sylabuss</h6>
-                                <h5 class="card-title">Tên Bài học</h5>
-                                <p class="card-text">Nội dung bài học</p>
-                                <div class="card-header" style="border: unset;">
-                                    Hướng dẫn
-                                </div>
-                                <div class="card-body">
-                                    <p class="card-text"></p>
-                                </div>
-                            </div>
-                        </div>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12 col-md-4 p-0">
+        <div class="exercises-text">
+          <div class="card">
+            <div class="card-header">
+              Bài học
+            </div>
+            <div class="scroll" id="style-4">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Tên Sylabuss</h6>
+                <h5 class="card-title">Tên Bài học</h5>
+                <p class="card-text">Nội dung bài học</p>
+                <div class="card-header" style="border: unset;">
+                  Hướng dẫn
+                </div>
+                <div class="card-body">
+                  <p class="card-text"></p>
+                </div>
+              </div>
+            </div>
 
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 p-0">
-                <div class="exercises-code" id="style-4">
-                    <div class="card border-custom">
-                        <div class="card-header">
-                            Khu vực code
-                        </div>
-                        <div class="scroll scroll-custom" id="style-4">
-                            <div class="form-group">
-                                <textarea class="form-control" name="" id="code-editor" ></textarea>
-                            </div>
-                        </div>
-                        <div class="card-footer">
-                            <button type="button" class="btn btn-primary" (click)="getCodeValue()">Run</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-4 p-0">
-                <div class="exercises-show-code" id="style-4">
-                    <div class="card border-custom">
-                        <div class="card-header" style="background: #15141f; color: white">
-                            Đầu ra
-                        </div>
-                        <div class="scroll" id="style-4-2">
-                            <div class="card-body" style="background: #000; height:100%; color: white; white-space: pre-line;">
-                                <div *ngIf="error" style="color: red">{{error}}</div>
-                                <div>{{output}}</div>
-                              <div *ngIf="isDone" style="color: green">code complete</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-12">
-                <div class="footer-box-custom">
-                    <div class="row">
-                        <div class="col-4"></div>
-                        <div class="col-4">
-                            <div class="btn-box">
-                                <button type="button" class="btn btn-outline-dark">Back</button>
-                                <span>19/20</span>
-                                <button type="button" class="btn btn-outline-dark">Next</button>
-                            </div>
-                        </div>
-                        <div class="col-4"></div>
-                    </div>
-                </div>
+      </div>
+      <div class="col-12 col-md-4 p-0" *ngIf="isCode">
+        <div class="exercises-code" id="style-4">
+          <div class="card border-custom">
+            <div class="card-header">
+              Khu vực code
             </div>
+            <div class="scroll scroll-custom" id="style-4">
+              <div class="form-group">
+                <textarea class="form-control" name="" id="code-editor"></textarea>
+              </div>
+            </div>
+            <div class="card-footer">
+              <button type="button" class="btn btn-primary" (click)="getCodeValue()">Run</button>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-12 col-md-4 p-0" *ngIf="isCode">
+        <div class="exercises-show-code" id="style-4">
+          <div class="card border-custom">
+            <div class="card-header" style="background: #15141f; color: white">
+              Đầu ra
+            </div>
+            <div class="scroll" id="style-4-2">
+              <div class="card-body" style="background: #000; height:100%; color: white; white-space: pre-line;">
+                <div *ngIf="error" style="color: red">{{error}}</div>
+                <div>{{output}}</div>
+                <div *ngIf="isDone" style="color: green">code complete</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-md-8 p-0" *ngIf="!isCode">
+        <div class="exercises-show-code" id="style-4">
+          <div class="card border-custom">
+            <div class="card-header">
+              Trắc nghiệm
+            </div>
+            <div class="scroll" id="style-4">
+              <div class="card-body">
+                <h6 class="card-subtitle mb-2 text-muted">Danh sách câu hỏi</h6>
+                <div style="padding: 20px;" *ngFor="let item of proExercises ; let i = index">
+                  <h5 class="card-title">Câu {{i + 1}} : <small>{{item.title}}</small></h5>
+                  <div class="form-check"
+                       *ngFor="let items of item.answers | keyvalue ; let s = index">
+                    <input class="form-check-input" type="radio" [attr.name]="'exampleRadios'+ i"
+                           [value]="items.s" (change)="onSelectionChange(item, items.key)">
+                    <label class="form-check-label" for='exampleRadios1'>
+                      <p>{{items.value}}</p>
+                    </label>
+                  </div>
+                </div>
+                <button type="button" class="btn btn-secondary" (click)="onsubmit()">Kiểm tra</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="footer-box-custom">
+          <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4">
+              <div class="btn-box">
+                <button type="button" class="btn btn-outline-dark">Back</button>
+                <span>19/20</span>
+                <button type="button" class="btn btn-outline-dark">Next</button>
+              </div>
+            </div>
+            <div class="col-4"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
