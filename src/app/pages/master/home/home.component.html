@@ -15,7 +15,7 @@
         <h2>Pascal</h2>
         <p>Pascal là một ngôn ngữ lập trình cho máy tính thuộc dạng mệnh lệnh và thủ tục</p>
         <!-- <button type="button" class="btn btn-primary">Hoàn thành <span>72%</span></button> -->
-        <button type="button" class="btn btn-primary">Bắt đầu <span>0%</span></button>
+        <!-- <button type="button" class="btn btn-primary">Bắt đầu <span>0%</span></button> -->
       </div>
     </div>
     <img src="https://www.codecademy.com/webpack/bf5c2cdedc7008c04ffe0b974fcd41b1.svg" alt="" srcset="">
@@ -124,7 +124,7 @@
           <div class="home-body-syllabus">
             <!-- Collapsible content -->
             <div class="border-box">
-              <div class="row" *ngFor="let item of syllabuss ; let i = index trackBy: trackById">
+              <div class="row" *ngFor="let item of syllabuss | keyvalue ; let i = index">
                 <div class="col-12">
                   <div class="card border-unset">
                     <div class="card-header">
@@ -133,14 +133,15 @@
                           [attr.href]="'#multiCollapseExample' + i" role="button" aria-expanded="false"><i
                             class="fa fa-angle-down" aria-hidden="true"></i></button>
                         <span class="list-exercise-number">{{i + 1}}</span>
-                        <span class="list-exercise">{{item.name}}</span>
+                        <span class="list-exercise">{{item.value.name}}</span>
                       </div>
                     </div>
                     <div class="collapse multi-collapse" [attr.id]="'multiCollapseExample' + i">
                       <div class=" card-body border-bottom">
-                        <ul class="item-list-exercise" *ngFor="let pro of item ; let i = index trackBy: trackById">
+                        <ul class="item-list-exercise"
+                          *ngFor="let items of item.value.syllabus | keyvalue ; let i = index">
                           <li>
-                            <a href="#">
+                            <a [routerLink]="['/exercises/',items.value.id_syllabus]" [routerLinkActive]="['router-link-active']">
                               <div class="itm-exercise-left">
                                 <div class="angle-right-icon">
                                   <i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -151,7 +152,7 @@
                                   </div>
                                 </div>
                                 <div class="itm-exercise-text">
-                                  <span>{{pro.syllabus.name_syllabus}}</span>
+                                  <span>{{items.value.name_syllabus}}</span>
                                 </div>
                               </div>
                               <div class="itm-exercise-right">

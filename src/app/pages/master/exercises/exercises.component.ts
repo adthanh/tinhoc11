@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import './editorcode';
-import {CodeValueRequest} from '../../../requests/code-value-request';
-import {CodeValueService} from '../../../services/code-value.service';
+import { CodeValueRequest } from '../../../requests/code-value-request';
+import { CodeValueService } from '../../../services/code-value.service';
 import base64 from 'base-64';
 import utf8 from 'utf8';
 import { FormControl } from '@angular/forms';
@@ -32,7 +32,7 @@ export class ExercisesComponent implements OnInit {
   isCorrect: FormControl = new FormControl;
   checked: number = 0;
   id = '';
-  isCode = false;
+  isCode = true;
   ngOnInit() {
     this.output = '';
     this.loadProject();
@@ -77,12 +77,12 @@ export class ExercisesComponent implements OnInit {
     return base64.encode(bytes);
   }
   selectedEntry: any;
-  onSelectionChange(question: any, currentAns :any) {
+  onSelectionChange(question: any, currentAns: any) {
     // this.selectedEntry = items.key;
-    if(question.correct == currentAns)
-    this.checked++;
+    if (question.correct == currentAns)
+      this.checked++;
     else this.checked--;
-    if(this.checked < 0 ) this.checked = 0;
+    if (this.checked < 0) this.checked = 0;
   }
 
 
@@ -121,8 +121,21 @@ export class ExercisesComponent implements OnInit {
     );
   }
 
-  onsubmit(){
-    if(this.checked === this.proExercises.length) console.log("All true");
+  onsubmit() {
+    if (this.checked === this.proExercises.length) console.log("All true");
+  }
+
+  hiddenMainLeft() {
+    var hidden = document.getElementById('hidden-main-left');
+    if (hidden.style.display === 'block') 
+    { 
+      hidden.style.display = 'none'; 
+      hidden.style.transition= '1s';
+    }
+    else {
+      hidden.style.display = 'block';
+      hidden.style.transition= '1s';
+    }
   }
 
 }

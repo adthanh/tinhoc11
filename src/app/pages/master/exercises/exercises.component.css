@@ -16,7 +16,7 @@
 }
 .scroll {
   overflow: auto;
-  height: calc(100vh - 231px);
+  height: calc(100vh - 190px);
 }
 .exercises-code .form-group {
   height: 100%;
@@ -44,7 +44,7 @@
   border: unset;
 }
 .scroll-custom {
-  height: calc(100vh - 291px);
+  height: calc(100vh - 249px);
 }
 .exercises-code .card-footer {
   background: #201e2f;
@@ -66,10 +66,32 @@
 .btn-box button {
   width: 7rem;
 }
-.footer-box-custom .row {
+/* .footer-box-custom .row {
   margin-top: -23px;
   height: 41px;
   background: #f7f7f7;
   font-weight: 600;
   color: #484848;
+} */
+
+.customTranform {
+  transition: margin-left 0.4s ease-in;
+  -webkit-transition: margin-left 0.4s ease-in;
+}
+/* .btn-tranform:active .customTranform{
+  transform: translateX(0rem);
+} */
+
+.show,
+.hiden {
+  /* we specify the transition length for hiding and showing */
+  transition: margin-left 0.4s ease-in;
+  -webkit-transition: margin-left 0.4s ease-in;
+}
+.hiden {
+  display: block;
+}
+
+.show {
+  display: none;
 }

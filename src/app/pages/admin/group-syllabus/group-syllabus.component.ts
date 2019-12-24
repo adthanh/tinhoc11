@@ -51,15 +51,21 @@ export class GroupSyllabusComponent implements OnInit {
     const self = this.groupSyllabusGroup.value;
     const request = new GroupSyllabusRequest();
     request.name = self.name;
-    this.groupSyllabusService.createGroupSyllabus(request).subscribe(
-      _result => {
-        this.loadGroupSyllabus();
-        alert("Thêm thành công nhóm bài giảng");
-      },
-      _error => {
-        alert("Lỗi hệ thống không xác định");
-      }
-    )
+    if (request === null) {
+      alert("Nhập đầy đủ thông tin");
+    }
+    else {
+      this.groupSyllabusService.createGroupSyllabus(request).subscribe(
+        _result => {
+          this.loadGroupSyllabus();
+          alert("Thêm thành công nhóm bài giảng");
+        },
+        _error => {
+          alert("Lỗi hệ thống không xác định");
+        }
+      )
+    }
+
   }
 
   searchGroupSyllabus() {
@@ -96,15 +102,21 @@ export class GroupSyllabusComponent implements OnInit {
     const request = new GroupSyllabusRequest();
     request.id = self.id;
     request.name = self.name;
-    this.groupSyllabusService.updateGroupSyllabus(request).subscribe(
-      _result => {
-        this.loadGroupSyllabus();
-        alert("Sửa thành công nhóm bài giảng");
-      },
-      _error => {
-        alert("Lỗi hệ thống không xác định");
-      }
-    )
+    if (request === null) {
+      alert("Nhập đầy đủ thông tin");
+    }
+    else {
+      this.groupSyllabusService.updateGroupSyllabus(request).subscribe(
+        _result => {
+          this.loadGroupSyllabus();
+          alert("Sửa thành công nhóm bài giảng");
+        },
+        _error => {
+          alert("Lỗi hệ thống không xác định");
+        }
+      )
+    }
+
   }
 
   deleteGroupSyllabus() {

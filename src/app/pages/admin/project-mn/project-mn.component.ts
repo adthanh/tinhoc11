@@ -1,10 +1,10 @@
-import {ProjectRequest} from '../../../requests/project-request';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
-import {ProjectService} from './../../../services/project.service';
-import {Component, OnInit} from '@angular/core';
-import {Syllabus} from 'src/app/response/syllabus-dto';
-import {SyllabusService} from 'src/app/services/syllabus.service';
-import {Project} from 'src/app/response/project-dto';
+import { ProjectRequest } from '../../../requests/project-request';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ProjectService } from './../../../services/project.service';
+import { Component, OnInit } from '@angular/core';
+import { Syllabus } from 'src/app/response/syllabus-dto';
+import { SyllabusService } from 'src/app/services/syllabus.service';
+import { Project } from 'src/app/response/project-dto';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
@@ -25,10 +25,10 @@ export class ProjectMnComponent implements OnInit {
   projectGroup: FormGroup;
 
   constructor
-  (
-    private projectService: ProjectService,
-    private syllabusService: SyllabusService
-  ) {}
+    (
+      private projectService: ProjectService,
+      private syllabusService: SyllabusService
+    ) { }
 
   ngOnInit() {
     this.loadProject();
@@ -96,15 +96,21 @@ export class ProjectMnComponent implements OnInit {
     request.description = seft.pDescription;
     request.type = seft.pType;
     request.json_data = seft.pJsonData;
-    this.projectService.createProject(request).subscribe(
-      _result => {
-        this.loadProject();
-        alert('Thêm thành công bài học');
-      },
-      error => {
-        console.log('error ' + error);
-      }
-    );
+    if (request === null) {
+      alert("Nhập đầy đủ thông tin");
+    }
+    else {
+      this.projectService.createProject(request).subscribe(
+        _result => {
+          this.loadProject();
+          alert('Thêm thành công bài học');
+        },
+        error => {
+          console.log('error ' + error);
+        }
+      );
+    }
+
   }
 
   openCreateModal() {
